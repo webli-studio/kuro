@@ -12,7 +12,7 @@ export default function Hero() {
       {/* Background Image */}
       <div className="absolute inset-0 w-full h-full">
         <Image
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D"
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=3000&q=90"
           alt="Kuro Sizzlers signature dishes"
           fill
           priority
