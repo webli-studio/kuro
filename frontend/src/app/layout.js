@@ -25,23 +25,16 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${displayFont.variable} ${bodyFont.variable} antialiased`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+        />
+      </head>
+
       <body className="min-h-screen flex flex-col">
         {children}
       </body>
     </html>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
