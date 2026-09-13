@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  /* ================================
+     DESIGN THEME
+     ================================ */
+
+  /* Brand / Accent */
+  --primary: #edba45;
+  --primary-hover: #dda72f;
+  --mango-gold: #edba45;
+  --mustard-deep: #b28c34;
+
+  /* Dark surfaces */
+  --wok-black: #0d0d0d;
+  --charcoal-night: #161616;
+  --charcoal-card: #1f1f1f;
+
+  /* Light surfaces */
+  --surface: #fffdf5;
+  --surface-cream: #faf6ea;
+  --surface-card: #ffffff;
+
+  /* Accent colors */
+  --chili-red: #e05338;
+  --thai-basil: #1e4b30;
+
+  /* Text */
+  --on-surface: #111111;
+  --on-surface-muted: #666666;
+
+  /* Borders */
+  --border-soft: #eae5d5;
+
+  /* Default */
+  --background: var(--surface);
+  --foreground: var(--on-surface);
+}
+
+@theme inline {
+  /* Base */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Theme colors */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-mango-gold: var(--mango-gold);
+  --color-mustard-deep: var(--mustard-deep);
+
+  /* Dark */
+  --color-wok-black: var(--wok-black);
+  --color-charcoal-night: var(--charcoal-night);
+  --color-charcoal-card: var(--charcoal-card);
+
+  /* Surfaces */
+  --color-surface: var(--surface);
+  --color-surface-cream: var(--surface-cream);
+  --color-surface-card: var(--surface-card);
+
+  /* Accents */
+  --color-chili-red: var(--chili-red);
+  --color-thai-basil: var(--thai-basil);
+
+  /* Text */
+  --color-on-surface: var(--on-surface);
+  --color-on-surface-muted: var(--on-surface-muted);
+
+  /* Borders */
+  --color-border-soft: var(--border-soft);
+
+  /* Fonts */
+  --font-display: var(--font-site-display);
+  --font-body: var(--font-site-body);
+}
+
+/* ================================
+   BASE
+   ================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-site-body), sans-serif;
+}
+
+/* Better text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Selection */
+::selection {
+  background: var(--primary);
+  color: var(--wok-black);
+}
+
+/* Images */
+img {
+  max-width: 100%;
+}
+
+/* Buttons & links */
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
