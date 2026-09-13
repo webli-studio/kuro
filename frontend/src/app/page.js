@@ -8,6 +8,7 @@ import FoodExperience from "./components/landing/foodExperience";
 import SignatureDishes from "./components/landing/signatureDishes";
 import ExperiencePreview from "./components/landing/experiencePreview";
 import GalleryPreview from "./components/landing/galleryPreview";
+import Reservation from "./components/landing/reservation";
 
 
 
@@ -22,6 +23,7 @@ export default function Home() {
       <SignatureDishes />
       <ExperiencePreview />
       <GalleryPreview />
+      <Reservation />
     </section>
     <Footer />
     </>
