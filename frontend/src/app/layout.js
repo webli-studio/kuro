@@ -1,6 +1,9 @@
 import { Epilogue, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 
+import Header from "./components/layout/header";
+import Footer from "./components/layout/footer";
+
 const displayFont = Epilogue({
   variable: "--font-site-display",
   subsets: ["latin"],
@@ -33,7 +36,11 @@ export default function RootLayout({ children }) {
       </head>
 
       <body className="min-h-screen flex flex-col">
+        <>
+        <Header />
         {children}
+        <Footer />
+        </>
       </body>
     </html>
   );
