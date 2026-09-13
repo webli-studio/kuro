@@ -6,6 +6,7 @@ import Hero from "./components/landing/hero";
 import OurStoryPreview from "./components/landing/storyPreview";
 import FoodExperience from "./components/landing/foodExperience";
 import SignatureDishes from "./components/landing/signatureDishes";
+import ExperiencePreview from "./components/landing/experiencePreview";
 
 
 
@@ -18,6 +19,7 @@ export default function Home() {
       <OurStoryPreview />
       <FoodExperience />
       <SignatureDishes />
+      <ExperiencePreview />
     </section>
     <Footer />
     </>
