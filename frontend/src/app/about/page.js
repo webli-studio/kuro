@@ -24,23 +24,23 @@ export const metadata = {
 
 export default function OurStoryPage() {
   return (
-    <main className="w-full bg-surface">
+    <main className="w-full">
       {/* =========================================================
           HERO
       ========================================================== */}
       <section
         aria-labelledby="our-story-title"
-        className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-32"
+        className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
-        <div className="mx-auto max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-          <div className="max-w-4xl">
-            <p className="mb-5 font-display text-xs font-black uppercase tracking-[0.22em] text-primary">
-              Our Story
-            </p>
+        <div className="mx-auto max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28 flex justify-center items-center">
+          <div className="max-w-4xl flex flex-col items-center">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
+            Our Story
+          </span>
 
             <h1
               id="our-story-title"
-              className="font-display text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
+              className="font-display text-center text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
             >
               THE STORY
               <br />
@@ -48,7 +48,7 @@ export default function OurStoryPage() {
               <span className="text-primary">SIZZLE.</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base">
+            <p className="mt-7 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base text-center">
               Kuro Sizzlers is where every plate tells a story of fire,
               flavour, and craft — born from a passion for bold cuisine and
               warm hospitality.
@@ -137,10 +137,10 @@ export default function OurStoryPage() {
 
             <h2
               id="why-kuro-title"
-              className="mt-4 font-display text-4xl font-black uppercase leading-[1.05] text-wok-black sm:text-5xl lg:text-6xl"
+              className="mt-4 font-display text-4xl font-black uppercase leading-[1.05] text-primary sm:text-5xl lg:text-6xl"
             >
               KURO MEANS{" "}
-              <span className="text-primary">“BLACK”.</span>
+              <span className="text-wok-black">“BLACK”.</span>
             </h2>
 
             <div className="mt-8 max-w-3xl space-y-6 font-body text-sm leading-8 text-on-surface-muted sm:text-base">
@@ -430,7 +430,7 @@ export default function OurStoryPage() {
       ========================================================== */}
       <section
         aria-labelledby="closing-title"
-        className="bg-primary py-20 text-wok-black sm:py-24 lg:py-28"
+        className="bg-mango-gold py-20 text-wok-black sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-[900px] px-5 text-center sm:px-8">
           <p className="font-display text-xs font-black uppercase tracking-[0.22em]">
@@ -456,7 +456,7 @@ export default function OurStoryPage() {
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link
               href="/menu"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-primary transition hover:bg-charcoal-night"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition hover:bg-charcoal-night"
             >
               Explore Menu
               <span className="material-symbols-outlined text-[18px]">

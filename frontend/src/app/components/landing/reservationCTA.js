@@ -4,13 +4,13 @@ export default function ReservationCTA() {
   return (
     <section
       id="reserve-section"
-      className="w-full bg-primary py-20 text-wok-black relative overflow-hidden"
+      className="w-full bg-mango-gold py-20 text-wok-black relative overflow-hidden"
       aria-labelledby="reservation-heading"
     >
       <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8 flex flex-col items-center text-center gap-8">
         {/* Heading */}
         <header className="flex flex-col items-center gap-2 max-w-2xl">
-          <span className="px-4 py-1 rounded-full bg-wok-black text-primary font-display font-black text-xs uppercase tracking-widest shadow">
+          <span className="px-4 py-1 rounded-full bg-wok-black text-mango-gold font-display font-black text-xs uppercase tracking-widest shadow">
             Reservations &amp; Bookings
           </span>
 
@@ -47,7 +47,7 @@ export default function ReservationCTA() {
 
             <Link
               href="/contact"
-              className="shrink-0 inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-primary hover:bg-primary-hover text-wok-black font-display font-black text-xs uppercase tracking-widest transition-colors shadow-lg"
+              className="shrink-0 inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-primary hover:bg-primary-hover text-mango-gold font-display font-black text-xs uppercase tracking-widest transition-colors shadow-lg"
             >
               <span>Book Your Table</span>
 

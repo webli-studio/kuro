@@ -2,35 +2,36 @@
 
 :root {
   /* ================================
-     DESIGN THEME
+     KURO SIZZLERS — BRAND THEME
      ================================ */
 
-  /* Brand / Accent */
-  --primary: #edba45;
-  --primary-hover: #dda72f;
-  --mango-gold: #edba45;
-  --mustard-deep: #b28c34;
+  /* Brand / Primary */
+  --primary: #c92613;
+  --primary-hover: #981a0e;
+
+  --mango-gold: #f59405;
+  --mustard-deep: #c96f00;
 
   /* Dark surfaces */
-  --wok-black: #0d0d0d;
-  --charcoal-night: #161616;
-  --charcoal-card: #1f1f1f;
+  --wok-black: #160a08;
+  --charcoal-night: #24100c;
+  --charcoal-card: #321711;
 
   /* Light surfaces */
-  --surface: #fffdf5;
-  --surface-cream: #faf6ea;
-  --surface-card: #ffffff;
+  --surface: #fbefdf;
+  --surface-cream: #f7e5ce;
+  --surface-card: #fffaf2;
 
-  /* Accent colors */
-  --chili-red: #e05338;
-  --thai-basil: #1e4b30;
+  /* Brand accents */
+  --chili-red: #c92613;
+  --thai-basil: #3d5a32;
 
   /* Text */
-  --on-surface: #111111;
-  --on-surface-muted: #666666;
+  --on-surface: #21100c;
+  --on-surface-muted: #705f56;
 
   /* Borders */
-  --border-soft: #eae5d5;
+  --border-soft: #ead6bf;
 
   /* Default */
   --background: var(--surface);
@@ -42,9 +43,10 @@
   --color-background: var(--background);
   --color-foreground: var(--foreground);
 
-  /* Theme colors */
+  /* Brand */
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+
   --color-mango-gold: var(--mango-gold);
   --color-mustard-deep: var(--mustard-deep);
 
@@ -87,26 +89,32 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-site-body), sans-serif;
-}
 
-/* Better text rendering */
-body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Selection */
+/* ================================
+   SELECTION
+   ================================ */
+
 ::selection {
   background: var(--primary);
-  color: var(--wok-black);
+  color: #fffaf2;
 }
 
-/* Images */
+/* ================================
+   IMAGES
+   ================================ */
+
 img {
   max-width: 100%;
 }
 
-/* Buttons & links */
+/* ================================
+   BUTTONS & LINKS
+   ================================ */
+
 button,
 a {
   -webkit-tap-highlight-color: transparent;

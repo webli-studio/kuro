@@ -42,13 +42,13 @@ export default function ContactPage() {
 
           <h1
             id="contact-title"
-            className="max-w-4xl font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-5xl lg:text-7xl"
+            className="max-w-4xl text-center font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-5xl lg:text-7xl"
           >
             LET&apos;S TALK
-            <span className="text-primary"> KURO.</span>
+            <span className="text-primary"> KURO SIZZLERS.</span>
           </h1>
 
-          <p className="mt-6 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base">
+          <p className="mt-6 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base text-center">
             Whether you&apos;re planning a table, a gathering, or simply want
             to know more about Kuro Sizzlers, send us a message and our team
             will get back to you.

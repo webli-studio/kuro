@@ -99,7 +99,7 @@ export default function FoodExperience() {
 
           <Link
             href="/menu"
-            className="inline-flex items-center gap-2 font-display font-black text-xs uppercase tracking-wider text-primary hover:text-white transition-colors bg-zinc-900 border border-zinc-700 px-4 py-2.5 rounded-lg"
+            className="inline-flex items-center gap-2 font-display font-black text-xs uppercase tracking-wider text-mango-gold hover:text-white transition-colors bg-zinc-900 border border-zinc-700 px-4 py-2.5 rounded-lg"
           >
             <span>View Full Menu</span>
             <span aria-hidden="true" className="text-[18px]">

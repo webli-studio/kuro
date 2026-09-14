@@ -54,7 +54,7 @@ export default function Hero() {
         <div className="max-w-4xl my-16 flex flex-col gap-6">
           <div className="flex items-center gap-2 text-primary font-display font-black text-sm sm:text-base tracking-[0.2em] uppercase">
             <span className="w-8 h-[2px] bg-primary" />
-            Experience The Kuro Way
+            Experience The Kuro Sizzlers Way
           </div>
 
           <h1
@@ -67,7 +67,7 @@ export default function Hero() {
               MEETS THE SIZZLE
             </span>
             <br />
-            AT KURO.
+            AT KURO Sizzlers.
           </h1>
 
           <p className="text-base sm:text-lg text-zinc-300 max-w-2xl font-body leading-relaxed">

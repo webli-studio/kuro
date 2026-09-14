@@ -107,7 +107,7 @@ export default function ExperiencePreview() {
             <div className="pt-2">
               <Link
                 href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary hover:bg-primary-hover text-wok-black font-display font-black text-xs uppercase tracking-widest transition-all"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary hover:bg-primary-hover text-mango-gold font-display font-black text-xs uppercase tracking-widest transition-all"
               >
                 <span>Plan Your Visit</span>
 

@@ -79,33 +79,7 @@ export default function SignatureDishes() {
           </p>
         </header>
 
-        {/* Category Filter Tabs */}
-        <div
-          className="flex flex-wrap items-center justify-center gap-2"
-          role="tablist"
-          aria-label="Filter signature dishes"
-        >
-          {categories.map((category) => {
-            const isActive = activeCategory === category.value;
-
-            return (
-              <button
-                key={category.value}
-                type="button"
-                role="tab"
-                aria-selected={isActive}
-                onClick={() => setActiveCategory(category.value)}
-                className={
-                  isActive
-                    ? "px-5 py-2.5 rounded-md bg-wok-black text-primary font-display font-black text-xs uppercase tracking-wider shadow-sm transition-all"
-                    : "px-5 py-2.5 rounded-md bg-surface-cream text-wok-black hover:bg-primary/30 font-display font-bold text-xs uppercase tracking-wider transition-all border border-border-soft"
-                }
-              >
-                {category.label}
-              </button>
-            );
-          })}
-        </div>
+        
 
         {/* Dish Cards */}
         <div
@@ -115,7 +89,7 @@ export default function SignatureDishes() {
           {filteredDishes.map((dish) => (
             <article
               key={dish.title}
-              className="flex flex-col bg-white rounded-xl overflow-hidden border-2 border-border-soft hover:border-wok-black hover:shadow-xl transition-all duration-300"
+              className="flex flex-col bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
               <div className="w-full aspect-[4/3] relative overflow-hidden bg-zinc-100">
@@ -123,7 +97,7 @@ export default function SignatureDishes() {
                   src={dish.image}
                   alt={dish.alt}
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 hover:scale-105"
                 />
 
@@ -144,18 +118,7 @@ export default function SignatureDishes() {
                   </p>
                 </div>
 
-                <div className="flex items-center justify-between pt-4 border-t border-border-soft">
-                  <span className="text-xs font-bold text-zinc-500">
-                    Kuro Sizzlers
-                  </span>
-
-                  <span
-                    className="material-symbols-outlined text-wok-black text-[22px]"
-                    aria-hidden="true"
-                  >
-                    arrow_circle_right
-                  </span>
-                </div>
+               
               </div>
             </article>
           ))}
@@ -165,7 +128,7 @@ export default function SignatureDishes() {
         <div className="flex justify-center pt-4">
           <Link
             href="/menu"
-            className="px-8 py-3.5 rounded-lg bg-wok-black hover:bg-zinc-900 text-primary hover:text-white font-display font-black text-xs uppercase tracking-widest transition-all duration-200 flex items-center gap-2 shadow-lg"
+            className="px-8 py-3.5 rounded-lg bg-wok-black hover:bg-zinc-900 text-mango-gold hover:text-white font-display font-black text-xs uppercase tracking-widest transition-all duration-200 flex items-center gap-2 shadow-lg"
           >
             <span>View Complete Menu</span>
 
