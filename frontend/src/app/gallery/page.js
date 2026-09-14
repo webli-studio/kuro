@@ -3,68 +3,52 @@ import Link from "next/link";
 
 const galleryItems = [
   {
-    title: "Signature Sizzlers",
-    category: "Food",
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=3000&q=90",
     alt: "Sizzling dish presented on a restaurant table",
-    size: "large",
+    ratio: "aspect-[4/5]",
   },
   {
-    title: "The Kuro Atmosphere",
-    category: "Atmosphere",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=3000&q=90",
     alt: "Warm restaurant dining atmosphere",
-    size: "normal",
+    ratio: "aspect-[4/3]",
   },
   {
-    title: "Crafted Cuisine",
-    category: "Food",
     image:
-      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=3000&q=90",
     alt: "Freshly prepared pasta dish",
-    size: "normal",
+    ratio: "aspect-square",
   },
   {
-    title: "Wok-Fired Flavours",
-    category: "Food",
     image:
-      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=3000&q=90",
     alt: "Wok-tossed dish inspired by Asian cuisine",
-    size: "tall",
+    ratio: "aspect-[3/4]",
   },
   {
-    title: "A Table Full of Flavour",
-    category: "Dining",
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=3000&q=90",
     alt: "Multiple dishes arranged for a shared dining experience",
-    size: "normal",
+    ratio: "aspect-[4/3]",
   },
   {
-    title: "Fire, Flavour & Craft",
-    category: "Atmosphere",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=3000&q=90",
     alt: "Restaurant interior with warm dining ambience",
-    size: "large",
+    ratio: "aspect-[3/4]",
   },
   {
-    title: "Made To Be Shared",
-    category: "Dining",
     image:
-      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=3000&q=90",
     alt: "Restaurant food prepared for sharing",
-    size: "normal",
+    ratio: "aspect-square",
   },
   {
-    title: "Fresh From The Kitchen",
-    category: "Food",
     image:
-      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=90",
+      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=3000&q=90",
     alt: "Freshly prepared restaurant dish",
-    size: "normal",
+    ratio: "aspect-[4/5]",
   },
 ];
 
@@ -84,30 +68,32 @@ export default function GalleryPage() {
       ====================================================== */}
       <section
         aria-labelledby="gallery-title"
-        className="w-full bg-wok-black text-white "
+        className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
-        <div className="mx-auto flex justify-center max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-          <div className="max-w-4xl">
-            <p className="mb-5 font-display text-xs font-black uppercase tracking-[0.22em] text-primary">
-              Kuro Sizzlers
-            </p>
+        <div className="mx-auto max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28 flex justify-center items-center">
+          <div className="max-w-4xl flex flex-col items-center">
+            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
+            Kuro Sizzlers
+          </span>
 
             <h1
               id="gallery-title"
-              className="font-display text-4xl font-black uppercase leading-[0.98] tracking-tight sm:text-5xl lg:text-7xl"
+              className="font-display text-center text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
             >
               A VISUAL
               <br />
-              <span className="text-primary">TASTE.</span>
+              TASTE{" "}
+              <span className="text-primary">GALLERY.</span>
             </h1>
 
-            <p className="mt-6 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base">
-              Step inside the world of Kuro Sizzlers — from sizzling plates
+            <p className="mt-7 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base text-center">
+             Step inside the world of Kuro Sizzlers — from sizzling plates
               and crafted dishes to the atmosphere around the table.
             </p>
           </div>
         </div>
       </section>
+      
 
       {/* =====================================================
           GALLERY
@@ -139,46 +125,27 @@ export default function GalleryPage() {
           </div>
 
 
-          {/* Masonry-style responsive grid */}
-          <div className="columns-1 gap-5 sm:columns-2 lg:columns-3">
-  {galleryItems.map((item) => (
-    <article
-      key={item.title}
-      className="group mb-5 break-inside-avoid overflow-hidden rounded-2xl border-2 border-border-soft bg-wok-black"
-    >
-      <div className="relative aspect-[4/5] w-full">
-        <Image
-          src={item.image}
-          alt={item.alt}
-          fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-wok-black via-wok-black/20 to-transparent opacity-80 transition-opacity duration-300 group-hover:opacity-95" />
-
-        <div className="absolute inset-x-0 bottom-0 p-5 sm:p-6">
-          <span className="font-body text-[10px] font-black uppercase tracking-[0.2em] text-primary">
-            {item.category}
-          </span>
-
-          <h3 className="mt-1 font-display text-lg font-black uppercase text-white sm:text-xl">
-            {item.title}
-          </h3>
-
-          <div className="mt-3 flex size-9 items-center justify-center rounded-full bg-primary text-wok-black transition-transform duration-300 group-hover:rotate-45">
-            <span
-              aria-hidden="true"
-              className="material-symbols-outlined text-[18px]"
-            >
-              arrow_forward
-            </span>
+          {/* Pinterest-style Masonry Gallery */}
+          <div className="columns-2 gap-3 sm:columns-2 sm:gap-4 lg:columns-3 lg:gap-5">
+            {galleryItems.map((item, index) => (
+              <article
+                key={`${item.image}-${index}`}
+                className="mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
+              >
+                <div
+                  className={`relative w-full overflow-hidden ${item.ratio}`}
+                >
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                  />
+                </div>
+              </article>
+            ))}
           </div>
-        </div>
-      </div>
-    </article>
-  ))}
-</div>
         </div>
       </section>
 
