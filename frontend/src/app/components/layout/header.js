@@ -1,8 +1,9 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Image from "next/image"
+import Image from "next/image";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -13,42 +14,44 @@ const navLinks = [
 
 export default function Header() {
   const pathname = usePathname();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-wok-black text-white text-xs font-semibold py-2 px-4 border-b border-primary/20">
-        <div className="max-w-[1360px] mx-auto flex items-center justify-center">
-          <span className="text-chili-red font-bold text-center">
+      <div className="bg-wok-black px-4 py-2 text-xs font-semibold text-white border-b border-primary/20">
+        <div className="mx-auto flex max-w-[1360px] items-center justify-center">
+          <span className="text-center font-bold text-chili-red">
             Where Every Plate Tells a Story of Fire, Flavour, and Craft.
           </span>
         </div>
       </div>
 
       {/* Header / Navigation */}
-      <header className="sticky top-0 z-50 w-full transition-all duration-300 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
-        <div className="h-20 max-w-[1360px] mx-auto px-4 sm:px-8 flex items-center justify-between">
+      <header className="sticky top-0 z-50 w-full bg-mango-gold shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+        <div className="mx-auto flex h-20 max-w-[1360px] items-center justify-between px-4 sm:px-8">
 
           {/* Brand Logo */}
           <Link
             href="/"
             aria-label="Kuro Sizzlers home"
-            className="flex items-center gap-2 group"
+            className="flex items-center"
+            onClick={() => setMenuOpen(false)}
           >
-            <div className="flex ">
-              <Image
-               src="/logo/logo.png"
-               alt="kuro sizzlers"
-               width={100}
-               height={100}
-               />
-            </div>
+            <Image
+              src="/logo/logo.png"
+              alt="Kuro Sizzlers"
+              width={150}
+              height={150}
+              priority
+              className="h-[72px] w-[72px] object-contain sm:h-[100px] sm:w-[100px]"
+            />
           </Link>
 
-          {/* Navigation */}
+          {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden lg:flex items-center gap-1 xl:gap-2"
+            className="hidden items-center gap-1 lg:flex xl:gap-2"
           >
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -58,10 +61,10 @@ export default function Header() {
                   key={link.href}
                   href={link.href}
                   aria-current={isActive ? "page" : undefined}
-                  className={`px-4 py-2 rounded font-display text-[13px] uppercase tracking-wider transition-all duration-200 ${
+                  className={`rounded px-4 py-2 font-display text-[13px] uppercase tracking-wider transition-all duration-200 ${
                     isActive
-                      ? "font-black bg-wok-black text-mango-gold shadow-sm"
-                      : "font-bold text-wok-black hover:bg-wok-black/10 hover:text-mango-gold"
+                      ? "bg-wok-black font-black text-mango-gold shadow-sm"
+                      : "font-bold text-wok-black hover:bg-wok-black/10"
                   }`}
                 >
                   {link.label}
@@ -71,17 +74,20 @@ export default function Header() {
           </nav>
 
           {/* Header Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3">
+
+            {/* Desktop / Tablet View Menu */}
             <Link
               href="/menu"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded border-2 border-wok-black font-display font-bold text-xs uppercase tracking-wider text-wok-black hover:bg-wok-black hover:text-mango-gold transition-all duration-200"
+              className="hidden items-center gap-1.5 rounded border-2 border-wok-black px-3 py-1.5 font-display text-xs font-bold uppercase tracking-wider text-wok-black transition-all duration-200 hover:bg-wok-black hover:text-mango-gold sm:inline-flex"
             >
               View Menu
             </Link>
 
+            {/* Book Table */}
             <Link
               href="/contact"
-              className="bg-wok-black hover:bg-zinc-900 text-mango-gold hover:text-white px-5 py-2.5 rounded-lg font-display font-black text-xs uppercase tracking-widest transition-all duration-200 shadow-md hover:shadow-lg flex items-center gap-2 border border-wok-black"
+              className="flex items-center gap-2 rounded-lg border border-wok-black bg-wok-black px-3.5 py-2.5 font-display text-[11px] font-black uppercase tracking-widest text-mango-gold shadow-md transition-all duration-200 hover:bg-zinc-900 hover:text-white sm:px-5 sm:text-xs"
             >
               <span>Book Table</span>
 
@@ -92,7 +98,73 @@ export default function Header() {
                 ↗
               </span>
             </Link>
+
+            {/* Mobile Menu Button */}
+            <button
+  type="button"
+  onClick={() => setMenuOpen((prev) => !prev)}
+  aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+  aria-expanded={menuOpen}
+  className="flex size-11 items-center justify-center rounded-lg border-2 border-wok-black text-wok-black transition-all duration-200 hover:bg-wok-black hover:text-mango-gold lg:hidden"
+>
+  <span className="relative flex size-5 items-center justify-center">
+    <span
+      className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
+        menuOpen ? "rotate-45" : "-translate-y-[4px]"
+      }`}
+    />
+
+    <span
+      className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
+        menuOpen ? "-rotate-45" : "translate-y-[4px]"
+      }`}
+    />
+  </span>
+</button>
           </div>
+        </div>
+
+        {/* Mobile Navigation */}
+        <div
+          className={`overflow-hidden border-t border-wok-black/10 bg-mango-gold transition-all duration-300 lg:hidden ${
+            menuOpen
+              ? "max-h-[420px] opacity-100"
+              : "max-h-0 opacity-0"
+          }`}
+        >
+          <nav
+            aria-label="Mobile navigation"
+            className="mx-auto flex max-w-[1360px] flex-col px-4 pb-5 pt-3 sm:px-8"
+          >
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  onClick={() => setMenuOpen(false)}
+                  className={`rounded-lg px-4 py-3 font-display text-sm uppercase tracking-wider transition-all duration-200 ${
+                    isActive
+                      ? "bg-wok-black font-black text-mango-gold"
+                      : "font-bold text-wok-black hover:bg-wok-black/10"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+
+            {/* Mobile View Menu */}
+            <Link
+              href="/menu"
+              onClick={() => setMenuOpen(false)}
+              className="mt-2 flex items-center justify-center rounded-lg border-2 border-wok-black px-4 py-3 font-display text-xs font-black uppercase tracking-widest text-wok-black transition-all duration-200 hover:bg-wok-black hover:text-mango-gold"
+            >
+              View Menu
+            </Link>
+          </nav>
         </div>
       </header>
     </>
