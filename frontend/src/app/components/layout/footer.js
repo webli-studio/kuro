@@ -3,9 +3,8 @@ import Link from "next/link";
 
 const exploreLinks = [
   { label: "Home", href: "/" },
-  { label: "Our Story", href: "/our-story" },
+  { label: "Our Story", href: "/about" },
   { label: "Menu", href: "/menu" },
-  { label: "Experience", href: "/experience" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
@@ -14,70 +13,25 @@ const socialLinks = [
   {
     label: "Instagram",
     href: "https://www.instagram.com/kurosizzlers",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        className="size-5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        aria-hidden="true"
-      >
-        <rect x="3" y="3" width="18" height="18" rx="5" />
-        <circle cx="12" cy="12" r="4" />
-        <circle
-          cx="17.5"
-          cy="6.5"
-          r="1"
-          fill="currentColor"
-          stroke="none"
-        />
-      </svg>
-    ),
+    icon: "/icon/instagram.svg",
   },
-  {
-    label: "Google Maps",
-    href: "https://maps.app.goo.gl/X5RRXdfMTF4ZsEYA?g_st=ic",
-    icon: (
-      <svg
-        viewBox="0 0 24 24"
-        className="size-5"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.8"
-        aria-hidden="true"
-      >
-        <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" />
-        <circle cx="12" cy="9" r="2.2" />
-      </svg>
-    ),
-  },
+];
+
+const orderLinks = [
   {
     label: "Zomato",
-    href: "https://zomato.onelink.me/zqzv/qgo7fqmm",
-    icon: (
-      <span className="font-display text-[13px] font-black leading-none">
-        Z
-      </span>
-    ),
+    href: "https://zomato.onelink.me/xqzv/qgo7fqmm",
+    icon: "/icon/zomato.svg",
   },
   {
     label: "Swiggy",
-    href: "https://www.swiggy.com/menu/1414719?source=sharing",
-    icon: (
-      <span className="font-display text-[13px] font-black leading-none">
-        S
-      </span>
-    ),
+    href: "https://www.swiggy.com/menu/1414719",
+    icon: "/icon/swiggy_192x192.png",
   },
   {
     label: "Ownly",
-    href: "https://ownly.food/app//brand/BR444681",
-    icon: (
-      <span className="font-display text-[13px] font-black leading-none">
-        O
-      </span>
-    ),
+    href: "https://ownly.food/app/brand/BR444681",
+    icon: "/icon/ownly.svg",
   },
 ];
 
@@ -92,6 +46,9 @@ const phoneNumbers = [
   },
 ];
 
+const mapLink =
+  "https://www.google.com/maps/place/KURO+Sizzlers/@12.9149312,77.5171309,17z/data=!4m16!1m9!3m8!1s0x3bae3f5a688c7bd1:0x82379ee0c82c958f!2sKURO+Sizzlers!8m2!3d12.9149312!4d77.5197058!9m1!1b1!16s%2Fg%2F11zckvh98j!3m5!1s0x3bae3f5a688c7bd1:0x82379ee0c82c958f!8m2!3d12.9149312!4d77.5197058!16s%2Fg%2F11zckvh98j?entry=ttu&g_ep=EgoyMDI2MDkwOS4wIKXMDSoASAFQAw%3D%3D";
+
 export default function Footer() {
   return (
     <>
@@ -100,9 +57,11 @@ export default function Footer() {
         id="footer-section"
       >
         <div className="mx-auto max-w-[1360px] px-4 pt-16 pb-12 sm:px-8">
+          {/* Main Footer Grid */}
           <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
-
-            {/* Brand */}
+            {/* =========================================================
+                BRAND
+            ========================================================= */}
             <div className="flex flex-col items-start gap-5 lg:col-span-4">
               <Link
                 href="/"
@@ -138,7 +97,9 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Explore */}
+            {/* =========================================================
+                EXPLORE
+            ========================================================= */}
             <div className="flex flex-col gap-3 lg:col-span-2">
               <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
                 Explore
@@ -150,7 +111,7 @@ export default function Footer() {
                     <li key={link.href}>
                       <Link
                         href={link.href}
-                        className="transition-colors hover:text-primary"
+                        className="transition-colors duration-200 hover:text-primary"
                       >
                         {link.label}
                       </Link>
@@ -160,46 +121,80 @@ export default function Footer() {
               </nav>
             </div>
 
-            {/* Location & Hours */}
+            {/* =========================================================
+                LOCATION & HOURS
+            ========================================================= */}
             <div className="flex flex-col gap-3 lg:col-span-3">
               <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
                 Location &amp; Hours
               </span>
 
-              <div className="mt-1 flex flex-col gap-4 font-body text-xs text-white/50">
-
+              <div className="mt-1 flex flex-col gap-5 font-body text-xs text-white/50">
                 {/* Location */}
-                <a
-                  href="https://maps.app.goo.gl/X5RRXdfMTF4ZsEYA?g_st=ic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group flex items-start gap-3"
-                >
+                <div className="flex items-start gap-3">
                   <span
-                    className="mt-0.5 text-sm text-primary"
+                    className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-primary"
                     aria-hidden="true"
                   >
-                    ●
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-5"
+                    >
+                      <path
+                        d="M20 10.2C20 15.1 12 21 12 21S4 15.1 4 10.2C4 5.67 7.58 2 12 2s8 3.67 8 8.2Z"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                      <circle
+                        cx="12"
+                        cy="10"
+                        r="2.6"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                    </svg>
                   </span>
 
                   <div>
-                    <span className="mb-0.5 block font-bold text-white transition-colors group-hover:text-primary">
+                    <span className="mb-0.5 block font-bold text-white">
                       Kuro Sizzlers
                     </span>
 
-                    <span className="transition-colors group-hover:text-white/70">
-                      View location on Google Maps
+                    <span className="text-white/50">
+                      Bengaluru
                     </span>
                   </div>
-                </a>
+                </div>
 
                 {/* Hours */}
                 <div className="flex items-start gap-3">
                   <span
-                    className="mt-0.5 text-lg leading-none text-primary"
+                    className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-primary"
                     aria-hidden="true"
                   >
-                    ◷
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-5"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      />
+                      <path
+                        d="M12 7v5l3 2"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </span>
 
                   <div>
@@ -207,17 +202,32 @@ export default function Footer() {
                       Opening Hours
                     </span>
 
-                    Please check with the restaurant for current timings.
+                    <span>
+                      Please check with the restaurant for current timings.
+                    </span>
                   </div>
                 </div>
 
                 {/* Phone / WhatsApp */}
                 <div className="flex items-start gap-3">
                   <span
-                    className="mt-0.5 text-sm font-bold text-primary"
+                    className="mt-0.5 flex size-5 shrink-0 items-center justify-center text-primary"
                     aria-hidden="true"
                   >
-                    ☎
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-5"
+                    >
+                      <path
+                        d="M7.2 3.5 9.5 3c.6-.1 1.2.2 1.4.8l1 2.5c.2.5.1 1.1-.3 1.5L10.2 9c1 2 2.6 3.6 4.6 4.6l1.2-1.4c.4-.4 1-.5 1.5-.3l2.5 1c.6.2.9.8.8 1.4l-.5 2.3c-.2.9-1 1.5-1.9 1.5C11 18.1 5.9 13 5.9 6.1c0-.9.6-1.7 1.5-1.9Z"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
                   </span>
 
                   <div className="flex flex-col gap-1">
@@ -229,7 +239,7 @@ export default function Footer() {
                       <a
                         key={phone.href}
                         href={phone.href}
-                        className="w-fit transition-colors hover:text-primary"
+                        className="w-fit transition-colors duration-200 hover:text-primary"
                       >
                         {phone.label}
                       </a>
@@ -239,71 +249,150 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Social & Ordering */}
-            <div className="flex flex-col gap-4 lg:col-span-3">
-              <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
-                Follow Kuro
-              </span>
+            {/* =========================================================
+                SOCIAL + ORDER + VISIT
+            ========================================================= */}
+            <div className="flex flex-col gap-6 lg:col-span-3">
+              {/* -------------------------
+                  SOCIAL
+              ------------------------- */}
+              <div className="flex flex-col gap-3">
+                <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
+                  Social
+                </span>
 
-              <p className="max-w-xs font-body text-xs leading-relaxed text-white/50">
-                Follow Kuro Sizzlers and order your favourite dishes online.
-              </p>
-
-              {/* Social Links */}
-              <div className="mt-1 flex flex-wrap items-center gap-3">
-                {socialLinks.map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`Kuro Sizzlers on ${social.label}`}
-                    className="flex size-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-white/70 transition-all duration-300 hover:scale-105 hover:border-primary hover:bg-primary hover:text-wok-black"
-                  >
-                    {social.icon}
-                  </a>
-                ))}
+                <div className="flex items-center gap-3">
+                  {socialLinks.map((social) => (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Kuro Sizzlers on ${social.label}`}
+                      className="group flex size-11 items-center justify-center rounded-lg border border-white/10 bg-white/5 transition-all duration-300 hover:scale-105 hover:border-primary"
+                    >
+                      <Image
+                        src={social.icon}
+                        alt=""
+                        width={22}
+                        height={22}
+                        className="size-[22px] object-contain"
+                      />
+                    </a>
+                  ))}
+                </div>
               </div>
 
-              {/* Order Online */}
-              <div className="mt-2">
-                <span className="mb-3 block font-display text-[10px] font-bold uppercase tracking-widest text-white/35">
+              {/* -------------------------
+                  ORDER ONLINE
+              ------------------------- */}
+              <div className="flex flex-col gap-3">
+                <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
                   Order Online
                 </span>
 
                 <div className="flex flex-wrap gap-2">
-                  <a
-                    href="https://zomato.onelink.me/zqzv/qgo7fqmm"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-wok-black"
-                  >
-                    Zomato
-                  </a>
+                  {orderLinks.map((order) => (
+                    <a
+                      key={order.label}
+                      href={order.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Order Kuro Sizzlers on ${order.label}`}
+                      className="flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary hover:text-wok-black"
+                    >
+                      <Image
+                        src={order.icon}
+                        alt=""
+                        width={16}
+                        height={16}
+                        className={
+                          order.label === "Swiggy"
+                            ? "size-4 rounded-full object-contain"
+                            : "size-4 object-contain"
+                        }
+                      />
 
-                  <a
-                    href="https://www.swiggy.com/menu/1414719?source=sharing"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-wok-black"
-                  >
-                    Swiggy
-                  </a>
-
-                  <a
-                    href="https://ownly.food/app//brand/BR444681"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:border-primary hover:bg-primary hover:text-wok-black"
-                  >
-                    Ownly
-                  </a>
+                      {order.label}
+                    </a>
+                  ))}
                 </div>
+              </div>
+
+              {/* -------------------------
+                  VISIT US
+              ------------------------- */}
+              <div className="flex flex-col gap-3">
+                <span className="font-display text-xs font-black uppercase tracking-widest text-primary">
+                  Visit Us
+                </span>
+
+                <a
+                  href={mapLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="View Kuro Sizzlers on Google Maps"
+                  className="group flex items-center gap-3"
+                >
+                  {/* Google Maps style location icon */}
+                  <span
+                    className="flex size-11 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 transition-all duration-300 group-hover:scale-105 group-hover:border-primary"
+                    aria-hidden="true"
+                  >
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="size-6"
+                    >
+                      <path
+                        d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z"
+                        fill="currentColor"
+                        className="text-primary"
+                      />
+                      <circle
+                        cx="12"
+                        cy="10"
+                        r="2.5"
+                        fill="currentColor"
+                        className="text-wok-black"
+                      />
+                    </svg>
+                  </span>
+
+                  <div className="min-w-0">
+                    <span className="block font-body text-xs font-bold text-white transition-colors duration-200 group-hover:text-primary">
+                      Kuro Sizzlers
+                    </span>
+
+                    <span className="mt-0.5 block font-body text-[11px] text-white/45 transition-colors duration-200 group-hover:text-white/65">
+                      View location on Google Maps
+                    </span>
+                  </div>
+
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="ml-auto size-4 shrink-0 text-white/30 transition-all duration-300 group-hover:translate-x-1 group-hover:text-primary"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M5 12h13M13 6l6 6-6 6"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
 
-          {/* Bottom Bar */}
+          {/* =========================================================
+              BOTTOM BAR
+          ========================================================= */}
           <div className="flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 font-body text-xs text-white/40 md:flex-row">
             <div>
               © {new Date().getFullYear()} Kuro Sizzlers. All rights reserved.
@@ -312,7 +401,7 @@ export default function Footer() {
             <div className="flex items-center gap-5">
               <Link
                 href="/privacy-policy"
-                className="transition-colors hover:text-primary"
+                className="transition-colors duration-200 hover:text-primary"
               >
                 Privacy Policy
               </Link>
@@ -325,7 +414,7 @@ export default function Footer() {
                   href="https://www.launchhaus.in/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-primary/90 transition-colors hover:text-primary"
+                  className="inline-flex items-center gap-1 text-primary/90 transition-colors duration-200 hover:text-primary"
                 >
                   Launch Haus
 
@@ -342,7 +431,9 @@ export default function Footer() {
         </div>
       </footer>
 
-      {/* Floating WhatsApp / Chat Button */}
+      {/* =========================================================
+          FLOATING WHATSAPP BUTTON
+      ========================================================= */}
       <div className="fixed bottom-20 right-5 z-40">
         <a
           href="https://wa.me/919900803958"
@@ -351,9 +442,13 @@ export default function Footer() {
           className="flex items-center gap-2 rounded-full border-2 border-mango-gold bg-wok-black px-4 py-2.5 font-display text-xs font-black uppercase tracking-wider text-mango-gold shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-charcoal-night hover:text-white"
           aria-label="Chat with Kuro Sizzlers on WhatsApp"
         >
-          <span className="text-[18px]" aria-hidden="true">
-            ✦
-          </span>
+          <Image
+            src="/icon/whatsapp.svg"
+            alt=""
+            width={20}
+            height={20}
+            className="size-5 object-contain"
+          />
 
           <span>Let's Chat!</span>
         </a>
