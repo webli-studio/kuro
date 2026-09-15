@@ -14,7 +14,7 @@ import ReservationCTA from "./components/landing/reservationCTA";
 export default function Home() {
   return (
     <>
-    <section className="relative w-screen">
+    <section className="relative w-screen bg-wok-black">
       <Hero />
       <OurStoryPreview />
       {/* <FoodExperience /> */}

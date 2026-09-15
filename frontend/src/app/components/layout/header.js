@@ -1,9 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -16,26 +18,117 @@ export default function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const headerRef = useRef(null);
+  const headerAnnouncement = useRef(null);
+
+  useGSAP(
+    () => {
+      const announcement = headerAnnouncement.current?.querySelector(".announcement");
+      const logo = headerRef.current?.querySelector(".header-logo");
+      const nav = headerRef.current?.querySelector(".header-nav");
+      const actions = headerRef.current?.querySelector(".header-actions");
+
+      const tl = gsap.timeline({
+        defaults: {
+          ease: "power3.out",
+        },
+      });
+
+      // Announcement
+      if (announcement) {
+        tl.fromTo(
+          announcement,
+          {
+            y: -30,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+          }
+        );
+      }
+
+      // Logo
+      if (logo) {
+        tl.fromTo(
+          logo,
+          {
+            y: -30,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.8,
+          },
+          "-=0.3"
+        );
+      }
+
+      // Navigation
+      if (nav) {
+        tl.fromTo(
+          nav,
+          {
+            y: -20,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+          },
+          "-=0.55"
+        );
+      }
+
+      // Header actions
+      if (actions) {
+        tl.fromTo(
+          actions,
+          {
+            y: -20,
+            opacity: 0,
+          },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.7,
+          },
+          "-=0.5"
+        );
+      }
+    },
+    {
+      scope: headerRef,
+    }
+  );
+
   return (
     <>
       {/* Announcement Bar */}
-      <div className="bg-wok-black px-4 py-2 text-xs font-semibold text-white border-b border-primary/20">
-        <div className="mx-auto flex max-w-[1360px] items-center justify-center">
-          <span className="text-center font-bold text-chili-red">
+      <div ref={headerAnnouncement} className="header-announcement bg-wok-black px-4 py-2 text-xs font-semibold text-white border-b border-primary/20">
+        <div className="announcement mx-auto flex max-w-[1360px] items-center justify-center">
+          <span className="text-center font-bold text-chili-red opacity-0">
             Where Every Plate Tells a Story of Fire, Flavour, and Craft.
           </span>
         </div>
       </div>
 
       {/* Header / Navigation */}
-      <header className="sticky top-0 z-50 w-full bg-mango-gold shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+      <header
+        ref={headerRef}
+        className="sticky top-0 z-50 w-full bg-mango-gold shadow-[0_8px_30px_rgba(0,0,0,0.12)]"
+      >
         <div className="mx-auto flex h-20 max-w-[1360px] items-center justify-between px-4 sm:px-8">
 
           {/* Brand Logo */}
           <Link
             href="/"
             aria-label="Kuro Sizzlers home"
-            className="flex items-center"
+            className="header-logo flex items-center opacity-0"
             onClick={() => setMenuOpen(false)}
           >
             <Image
@@ -51,7 +144,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-1 lg:flex xl:gap-2"
+            className="header-nav hidden items-center gap-1 opacity-0 lg:flex xl:gap-2"
           >
             {navLinks.map((link) => {
               const isActive = pathname === link.href;
@@ -74,7 +167,7 @@ export default function Header() {
           </nav>
 
           {/* Header Actions */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div className="header-actions flex items-center gap-2 opacity-0 sm:gap-3">
 
             {/* Desktop / Tablet View Menu */}
             <Link
@@ -101,26 +194,34 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-  type="button"
-  onClick={() => setMenuOpen((prev) => !prev)}
-  aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-  aria-expanded={menuOpen}
-  className="flex size-11 items-center justify-center rounded-lg border-2 border-wok-black text-wok-black transition-all duration-200 hover:bg-wok-black hover:text-mango-gold lg:hidden"
->
-  <span className="relative flex size-5 items-center justify-center">
-    <span
-      className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
-        menuOpen ? "rotate-45" : "-translate-y-[4px]"
-      }`}
-    />
+              type="button"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-label={
+                menuOpen
+                  ? "Close navigation menu"
+                  : "Open navigation menu"
+              }
+              aria-expanded={menuOpen}
+              className="flex size-11 items-center justify-center rounded-lg border-2 border-wok-black text-wok-black transition-all duration-200 hover:bg-wok-black hover:text-mango-gold lg:hidden"
+            >
+              <span className="relative flex size-5 items-center justify-center">
+                <span
+                  className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
+                    menuOpen
+                      ? "rotate-45"
+                      : "-translate-y-[4px]"
+                  }`}
+                />
 
-    <span
-      className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
-        menuOpen ? "-rotate-45" : "translate-y-[4px]"
-      }`}
-    />
-  </span>
-</button>
+                <span
+                  className={`absolute h-[2px] w-5 bg-current transition-transform duration-300 ${
+                    menuOpen
+                      ? "-rotate-45"
+                      : "translate-y-[4px]"
+                  }`}
+                />
+              </span>
+            </button>
           </div>
         </div>
 
@@ -156,7 +257,6 @@ export default function Header() {
               );
             })}
 
-            {/* Mobile View Menu */}
             <Link
               href="/menu"
               onClick={() => setMenuOpen(false)}
