@@ -66,15 +66,15 @@ export default function Footer() {
               <Link
                 href="/"
                 aria-label="Kuro Sizzlers home"
-                className="inline-flex"
+                className="inline-flex "
               >
-                <div className="relative h-[92px] w-[155px] overflow-hidden">
+                <div className="relative h-[100px] w-[155px] overflow-hidden">
                   <Image
                     src="/logo/logo.png"
                     alt="Kuro Sizzlers"
                     fill
-                    sizes="155px"
-                    className="scale-[1.35] object-contain object-center"
+                    sizes="180px"
+                    className="md:scale-[2.2] scale-[2.3] inline-flex self-align-center object-contain object-center"
                     priority
                   />
                 </div>
@@ -439,18 +439,18 @@ export default function Footer() {
           href="https://wa.me/919900803958"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 rounded-full border-2 border-mango-gold bg-wok-black px-4 py-2.5 font-display text-xs font-black uppercase tracking-wider text-mango-gold shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-charcoal-night hover:text-white"
+          className="flex items-center gap-2 rounded-full border-2 border-mango-gold bg-wok-black md:px-4 md:py-2.5 p-2 font-display text-xs font-black uppercase tracking-wider text-mango-gold shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-charcoal-night hover:text-white"
           aria-label="Chat with Kuro Sizzlers on WhatsApp"
         >
           <Image
             src="/icon/whatsapp.svg"
             alt=""
-            width={20}
-            height={20}
-            className="size-5 object-contain"
+            width={25}
+            height={25}
+            className="md:size-5 size-8 object-contain"
           />
 
-          <span>Let's Chat!</span>
+          <span className="md:flex hidden">Let's Chat!</span>
         </a>
       </div>
     </>

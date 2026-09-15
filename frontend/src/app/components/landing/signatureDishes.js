@@ -2,19 +2,16 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
-const categories = [
-  { label: "All Signatures", value: "all" },
-  { label: "Sizzlers", value: "sizzlers" },
-  { label: "Continental", value: "continental" },
-  { label: "Indo-Chinese", value: "indo-chinese" },
-];
+gsap.registerPlugin(ScrollTrigger);
 
 const dishes = [
   {
     title: "Signature Chicken Sizzler",
-    category: "sizzlers",
     categoryLabel: "Signature Sizzler",
     description:
       "A signature sizzling plate crafted around Kuro's love for fire, flavour, and the classic cast-iron sizzler experience.",
@@ -24,7 +21,6 @@ const dishes = [
   },
   {
     title: "Herb-Crusted Pasta",
-    category: "continental",
     categoryLabel: "Continental Favourite",
     description:
       "Comforting Continental flavours brought together with herbs, rich textures, and Kuro's contemporary Indian soul.",
@@ -34,7 +30,6 @@ const dishes = [
   },
   {
     title: "Signature Wok Creation",
-    category: "indo-chinese",
     categoryLabel: "Indo-Chinese Wok",
     description:
       "Bold wok-tossed flavours inspired by Indo-Chinese cooking, finished with the energy and heat of the Kuro kitchen.",
@@ -45,22 +40,97 @@ const dishes = [
 ];
 
 export default function SignatureDishes() {
-  const [activeCategory, setActiveCategory] = useState("all");
+  const sectionRef = useRef(null);
 
-  const filteredDishes =
-    activeCategory === "all"
-      ? dishes
-      : dishes.filter((dish) => dish.category === activeCategory);
+  useGSAP(
+    () => {
+      /* =====================================================
+         SECTION HEADING
+      ====================================================== */
+
+      gsap.fromTo(
+        ".signature-heading > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".signature-heading",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         DISH CARDS
+      ====================================================== */
+
+      gsap.fromTo(
+        ".signature-dish-card",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: ".signature-dishes-grid",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         CTA
+      ====================================================== */
+
+      gsap.fromTo(
+        ".signature-dishes-cta",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".signature-dishes-cta",
+            start: "top 88%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: sectionRef,
+    }
+  );
 
   return (
     <section
+      ref={sectionRef}
       id="signature-dishes"
       className="w-full bg-surface py-20"
       aria-labelledby="signature-dishes-heading"
     >
       <div className="max-w-[1360px] mx-auto px-4 sm:px-8 flex flex-col gap-10">
+
         {/* Section Heading */}
-        <header className="flex flex-col items-center text-center max-w-2xl mx-auto gap-2">
+        <header className="signature-heading flex flex-col items-center text-center max-w-2xl mx-auto gap-2">
           <span className="font-display font-black text-xs text-wok-black uppercase tracking-[0.25em] bg-primary px-3 py-1 rounded">
             Chef&apos;s Masterpieces
           </span>
@@ -79,17 +149,15 @@ export default function SignatureDishes() {
           </p>
         </header>
 
-        
-
         {/* Dish Cards */}
         <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-2"
+          className="signature-dishes-grid grid grid-cols-1 md:grid-cols-3 gap-8 mt-2"
           role="tabpanel"
         >
-          {filteredDishes.map((dish) => (
+          {dishes.map((dish) => (
             <article
               key={dish.title}
-              className="flex flex-col bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
+              className="signature-dish-card flex flex-col bg-white rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
               <div className="w-full aspect-[4/3] relative overflow-hidden bg-zinc-100">
@@ -117,15 +185,13 @@ export default function SignatureDishes() {
                     {dish.description}
                   </p>
                 </div>
-
-               
               </div>
             </article>
           ))}
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center pt-4">
+        <div className="signature-dishes-cta flex justify-center pt-4">
           <Link
             href="/menu"
             className="px-8 py-3.5 rounded-lg bg-wok-black hover:bg-zinc-900 text-mango-gold hover:text-white font-display font-black text-xs uppercase tracking-widest transition-all duration-200 flex items-center gap-2 shadow-lg"
@@ -140,6 +206,7 @@ export default function SignatureDishes() {
             </span>
           </Link>
         </div>
+
       </div>
     </section>
   );

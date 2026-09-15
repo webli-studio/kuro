@@ -1,15 +1,71 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function ReservationCTA() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".reservation-heading > *", {
+        opacity: 0,
+        y: 20,
+        duration: 0.65,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".reservation-heading",
+          start: "top 82%",
+          once: true,
+        },
+      });
+
+      gsap.from(".reservation-card", {
+        opacity: 0,
+        y: 25,
+        duration: 0.7,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".reservation-card",
+          start: "top 85%",
+          once: true,
+        },
+      });
+
+      gsap.from(".reservation-supporting > *", {
+        opacity: 0,
+        y: 15,
+        duration: 0.55,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".reservation-supporting",
+          start: "top 90%",
+          once: true,
+        },
+      });
+    },
+    {
+      scope: sectionRef,
+    }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="reserve-section"
       className="w-full bg-mango-gold py-20 text-wok-black relative overflow-hidden"
       aria-labelledby="reservation-heading"
     >
       <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8 flex flex-col items-center text-center gap-8">
         {/* Heading */}
-        <header className="flex flex-col items-center gap-2 max-w-2xl">
+        <header className="reservation-heading flex flex-col items-center gap-2 max-w-2xl">
           <span className="px-4 py-1 rounded-full bg-wok-black text-mango-gold font-display font-black text-xs uppercase tracking-widest shadow">
             Reservations &amp; Bookings
           </span>
@@ -28,7 +84,7 @@ export default function ReservationCTA() {
         </header>
 
         {/* Final CTA Card */}
-        <div className="w-full bg-wok-black rounded-2xl p-6 sm:p-8 shadow-2xl text-white border-2 border-wok-black">
+        <div className="reservation-card w-full bg-wok-black rounded-2xl p-6 sm:p-8 shadow-2xl text-white border-2 border-wok-black">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
             <div className="flex flex-col gap-2">
               <span className="font-display text-xs font-black text-primary uppercase tracking-[0.2em]">
@@ -62,7 +118,7 @@ export default function ReservationCTA() {
         </div>
 
         {/* Supporting CTA */}
-        <div className="flex flex-wrap items-center justify-center gap-6 text-wok-black font-bold text-xs uppercase tracking-wider">
+        <div className="reservation-supporting flex flex-wrap items-center justify-center gap-6 text-wok-black font-bold text-xs uppercase tracking-wider">
           <Link
             href="/contact"
             className="hover:text-white flex items-center gap-1 transition-colors"

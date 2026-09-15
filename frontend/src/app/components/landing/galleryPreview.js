@@ -1,5 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 const galleryItems = [
   {
@@ -41,8 +49,44 @@ const galleryItems = [
 ];
 
 export default function GalleryPreview() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.from(".gallery-preview-header > *", {
+        opacity: 0,
+        y: 20,
+        duration: 0.65,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".gallery-preview-header",
+          start: "top 82%",
+          once: true,
+        },
+      });
+
+      gsap.from(".gallery-preview-item", {
+        opacity: 0,
+        y: 25,
+        duration: 0.7,
+        stagger: 0.1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: ".gallery-preview-grid",
+          start: "top 82%",
+          once: true,
+        },
+      });
+    },
+    {
+      scope: sectionRef,
+    }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="gallery-section"
       className="w-full bg-wok-black py-20 sm:py-24 lg:py-28"
       aria-labelledby="gallery-heading"
@@ -50,7 +94,7 @@ export default function GalleryPreview() {
       <div className="mx-auto flex max-w-[1360px] flex-col gap-10 px-5 sm:px-8 lg:px-10">
 
         {/* Section Header */}
-        <header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+        <header className="gallery-preview-header flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-primary">
               Visual Feed
@@ -77,11 +121,11 @@ export default function GalleryPreview() {
         </header>
 
         {/* Pinterest-style Preview */}
-        <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:gap-5">
+        <div className="gallery-preview-grid columns-2 gap-3 sm:columns-3 sm:gap-4 lg:gap-5">
           {galleryItems.map((item, index) => (
             <article
               key={`${item.image}-${index}`}
-              className="mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
+              className="gallery-preview-item mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
             >
               <div
                 className={`relative w-full overflow-hidden ${item.ratio}`}

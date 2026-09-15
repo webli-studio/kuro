@@ -2,6 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const atmosphereFeatures = [
   {
@@ -25,8 +31,89 @@ const atmosphereFeatures = [
 ];
 
 export default function ExperiencePreview() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      /* =====================================================
+         CONTENT REVEAL
+      ====================================================== */
+
+      gsap.fromTo(
+        ".experience-content > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".experience-content",
+            start: "top 78%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         FEATURE CARDS
+      ====================================================== */
+
+      gsap.fromTo(
+        ".experience-feature",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".experience-features",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         RIGHT VISUAL
+      ====================================================== */
+
+      gsap.fromTo(
+        ".experience-visual",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".experience-visual",
+            start: "top 80%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: sectionRef,
+    }
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="experience-section"
       className="relative w-full py-20 overflow-hidden bg-charcoal-night"
       aria-labelledby="experience-heading"
@@ -47,7 +134,7 @@ export default function ExperiencePreview() {
       <div className="relative z-10 max-w-[1360px] mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Content */}
-          <div className="lg:col-span-7 flex flex-col gap-6">
+          <div className="experience-content lg:col-span-7 flex flex-col gap-6">
             <div className="flex items-center gap-2 text-primary font-display font-black text-xs tracking-[0.25em] uppercase">
               <span
                 className="material-symbols-outlined text-[16px]"
@@ -79,11 +166,11 @@ export default function ExperiencePreview() {
             </p>
 
             {/* Bento Features */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <div className="experience-features grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
               {atmosphereFeatures.map((feature) => (
                 <article
                   key={feature.title}
-                  className="p-5 bg-wok-black/80 border border-zinc-800 rounded-lg flex flex-col gap-2"
+                  className="experience-feature p-5 bg-wok-black/80 border border-zinc-800 rounded-lg flex flex-col gap-2"
                 >
                   <span
                     className="material-symbols-outlined text-primary text-[28px]"
@@ -122,7 +209,7 @@ export default function ExperiencePreview() {
           </div>
 
           {/* Right Side Visual */}
-          <div className="lg:col-span-5 flex flex-col gap-4">
+          <div className="experience-visual lg:col-span-5 flex flex-col gap-4">
             <div className="rounded-2xl overflow-hidden shadow-2xl border-2 border-primary/30 p-2 bg-wok-black/60">
               <div className="relative w-full aspect-[4/5]">
                 <Image

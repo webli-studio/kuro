@@ -1,10 +1,98 @@
-"use client"
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function OurStoryPreview() {
+  const sectionRef = useRef(null);
+
+  useGSAP(
+    () => {
+      /* =====================================================
+         IMAGE
+      ====================================================== */
+
+      gsap.fromTo(
+        ".story-preview-image",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 78%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         STORY CONTENT
+      ====================================================== */
+
+      gsap.fromTo(
+        ".story-preview-content > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".story-preview-content",
+            start: "top 78%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         FEATURE COUNTERS
+      ====================================================== */
+
+      gsap.fromTo(
+        ".story-preview-stat",
+        {
+          opacity: 0,
+          y: 15,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".story-preview-stats",
+            start: "top 85%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: sectionRef,
+    }
+  );
+
   return (
     <section
+      ref={sectionRef}
       className="w-full bg-surface-cream py-20 relative overflow-hidden"
       id="our-story"
       aria-labelledby="our-story-heading"
@@ -14,7 +102,7 @@ export default function OurStoryPreview() {
 
           {/* Image */}
           <div className="lg:col-span-6 relative">
-            <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-wok-black bg-wok-black">
+            <div className="story-preview-image relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-wok-black bg-wok-black">
               <Image
                 src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2400&q=90"
                 alt="Kuro Sizzlers restaurant dining experience"
@@ -36,7 +124,7 @@ export default function OurStoryPreview() {
           </div>
 
           {/* Story Content */}
-          <div className="lg:col-span-6 flex flex-col gap-6">
+          <div className="story-preview-content lg:col-span-6 flex flex-col gap-6">
 
             {/* Eyebrow */}
             <div className="flex items-center gap-2 text-wok-black font-display font-black text-xs tracking-[0.25em] uppercase">
@@ -89,9 +177,9 @@ export default function OurStoryPreview() {
             </div>
 
             {/* Feature Counters */}
-            <div className="grid grid-cols-3 gap-4 pt-4 mt-2 bg-white p-6 rounded-xl border border-border-soft shadow-sm">
+            <div className="story-preview-stats grid grid-cols-3 gap-4 pt-4 mt-2 bg-white p-6 rounded-xl border border-border-soft shadow-sm">
 
-              <div className="flex flex-col border-r border-zinc-200 pr-2">
+              <div className="story-preview-stat flex flex-col border-r border-zinc-200 pr-2">
                 <span className="font-display text-2xl sm:text-3xl font-black text-wok-black">
                   3
                 </span>
@@ -101,7 +189,7 @@ export default function OurStoryPreview() {
                 </span>
               </div>
 
-              <div className="flex flex-col border-r border-zinc-200 pr-2">
+              <div className="story-preview-stat flex flex-col border-r border-zinc-200 pr-2">
                 <span className="font-display text-2xl sm:text-3xl font-black text-primary">
                   KURO
                 </span>
@@ -111,7 +199,7 @@ export default function OurStoryPreview() {
                 </span>
               </div>
 
-              <div className="flex flex-col">
+              <div className="story-preview-stat flex flex-col">
                 <span className="font-display text-2xl sm:text-3xl font-black text-wok-black">
                   100%
                 </span>
