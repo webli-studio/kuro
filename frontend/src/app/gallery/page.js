@@ -1,5 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const galleryItems = [
   {
@@ -54,15 +62,114 @@ const galleryItems = [
 
 const categories = ["All", "Food", "Dining", "Atmosphere"];
 
-export const metadata = {
-  title: "Gallery | Kuro Sizzlers",
-  description:
-    "Explore the Kuro Sizzlers gallery and get a visual taste of our food, dining atmosphere and the fire, flavour and craft behind the experience.",
-};
+
 
 export default function GalleryPage() {
+  const pageRef = useRef(null);
+
+  useGSAP(
+    () => {
+      /* =====================================================
+         HERO LOAD ANIMATION
+      ====================================================== */
+
+      const heroTimeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+      });
+
+      heroTimeline.fromTo(
+        ".gallery-hero-content > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+        }
+      );
+
+      /* =====================================================
+         GALLERY INTRO
+      ====================================================== */
+
+      gsap.fromTo(
+        ".gallery-section-intro",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".gallery-section-intro",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         GALLERY IMAGES
+      ====================================================== */
+
+      gsap.fromTo(
+        ".gallery-item",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: ".gallery-grid",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /* =====================================================
+         CTA
+      ====================================================== */
+
+      gsap.fromTo(
+        ".gallery-cta-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".gallery-cta-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: pageRef,
+    }
+  );
+
   return (
-    <main className="w-full">
+    <main ref={pageRef} className="w-full">
       {/* =====================================================
           HERO
       ====================================================== */}
@@ -70,32 +177,29 @@ export default function GalleryPage() {
         aria-labelledby="gallery-title"
         className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
-        <div className="mx-auto max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28 flex justify-center items-center">
-          <div className="max-w-4xl flex flex-col items-center">
+        <div className="mx-auto flex max-w-[1360px] items-center justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
+          <div className="gallery-hero-content flex max-w-4xl flex-col items-center">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
-            Kuro Sizzlers
-          </span>
+              Kuro Sizzlers
+            </span>
 
             <h1
               id="gallery-title"
-              className="font-display text-center text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
+              className="text-center font-display text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
             >
               A VISUAL
               <br />
-              TASTE{" "}
-              <span className="text-primary">GALLERY.</span>
+              TASTE <span className="text-primary">GALLERY.</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base text-center">
-             Step inside the world of Kuro Sizzlers — from sizzling plates
+            <p className="mt-7 max-w-2xl text-center font-body text-sm leading-7 text-white/65 sm:text-base">
+              Step inside the world of Kuro Sizzlers — from sizzling plates
               and crafted dishes to the atmosphere around the table.
             </p>
           </div>
         </div>
       </section>
-      
-
-      {/* =====================================================
+            {/* =====================================================
           GALLERY
       ====================================================== */}
       <section
@@ -104,7 +208,7 @@ export default function GalleryPage() {
       >
         <div className="mx-auto max-w-[1360px] px-5 sm:px-8 lg:px-10">
           {/* Section intro */}
-          <div className="mb-10 flex flex-col gap-6 sm:mb-12 lg:flex-row lg:items-end lg:justify-between">
+          <div className="gallery-section-intro mb-10 flex flex-col gap-6 sm:mb-12 lg:flex-row lg:items-end lg:justify-between">
             <div>
               <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
                 Photo Journal
@@ -124,13 +228,12 @@ export default function GalleryPage() {
             </p>
           </div>
 
-
           {/* Pinterest-style Masonry Gallery */}
-          <div className="columns-2 gap-3 sm:columns-2 sm:gap-4 lg:columns-3 lg:gap-5">
+          <div className="gallery-grid columns-2 gap-3 sm:columns-2 sm:gap-4 lg:columns-3 lg:gap-5">
             {galleryItems.map((item, index) => (
               <article
                 key={`${item.image}-${index}`}
-                className="mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
+                className="gallery-item mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
               >
                 <div
                   className={`relative w-full overflow-hidden ${item.ratio}`}
@@ -148,15 +251,14 @@ export default function GalleryPage() {
           </div>
         </div>
       </section>
-
-      {/* =====================================================
+            {/* =====================================================
           EXPERIENCE CTA
       ====================================================== */}
       <section
         aria-labelledby="gallery-cta-title"
         className="w-full bg-mango-gold py-16 text-wok-black sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-[900px] px-5 text-center sm:px-8">
+        <div className="gallery-cta-content mx-auto max-w-[900px] px-5 text-center sm:px-8">
           <p className="font-display text-xs font-black uppercase tracking-[0.22em]">
             Experience Kuro
           </p>

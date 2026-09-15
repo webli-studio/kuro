@@ -8,6 +8,51 @@ import "react-pdf/dist/Page/TextLayer.css";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
+function LazyPDFPage({ pageNumber, pageWidth, containerRef }) {
+  const pageRef = useRef(null);
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    const pageElement = pageRef.current;
+    const scrollContainer = containerRef.current;
+
+    if (!pageElement || !scrollContainer) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
+      },
+      {
+        root: scrollContainer,
+        rootMargin: "800px 0px",
+      }
+    );
+
+    observer.observe(pageElement);
+
+    return () => observer.disconnect();
+  }, [containerRef]);
+
+  return (
+    <div
+      ref={pageRef}
+      className="w-fit max-w-full overflow-hidden bg-white shadow-lg"
+    >
+      {shouldRender && (
+        <Page
+          pageNumber={pageNumber}
+          width={pageWidth}
+          renderTextLayer
+          renderAnnotationLayer
+        />
+      )}
+    </div>
+  );
+}
+
 export default function MenuPDF() {
   const [numPages, setNumPages] = useState(null);
   const [pageWidth, setPageWidth] = useState(850);
@@ -21,8 +66,7 @@ export default function MenuPDF() {
     const updateWidth = () => {
       const width = element.clientWidth;
 
-      // Keep some breathing room on both sides
-      setPageWidth(Math.min(width - 24, 850));
+      setPageWidth(Math.min(Math.max(width - 24, 280), 850));
     };
 
     updateWidth();
@@ -55,17 +99,12 @@ export default function MenuPDF() {
       >
         <div className="flex flex-col items-center gap-4 py-4 sm:gap-5 sm:py-5">
           {Array.from({ length: numPages || 0 }, (_, index) => (
-            <div
+            <LazyPDFPage
               key={index}
-              className="w-fit max-w-full overflow-hidden bg-white shadow-lg"
-            >
-              <Page
-                pageNumber={index + 1}
-                width={pageWidth}
-                renderTextLayer
-                renderAnnotationLayer
-              />
-            </div>
+              pageNumber={index + 1}
+              pageWidth={pageWidth}
+              containerRef={containerRef}
+            />
           ))}
         </div>
       </Document>

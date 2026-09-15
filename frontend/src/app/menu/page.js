@@ -1,14 +1,104 @@
-import MenuPDF from "../components/menuPDF";
+"use client";
 
-export const metadata = {
-  title: "Menu | Kuro Sizzlers",
-  description:
-    "Explore the complete Kuro Sizzlers menu featuring Continental, Chinese and Multi-Cuisine dishes, signature sizzlers, pizzas, pastas and desserts.",
-};
+import MenuPDF from "../components/menuPDF";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
+
+
 
 export default function MenuPage() {
+  const pageRef = useRef(null);
+
+  useGSAP(
+    () => {
+      /*
+       * =========================================================
+       * HERO — PAGE LOAD
+       * =========================================================
+       */
+      const heroTimeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+      });
+
+      heroTimeline.fromTo(
+        ".menu-hero-content > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+        }
+      );
+
+      /*
+       * =========================================================
+       * MENU SECTION — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".menu-section-intro",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".menu-section-intro",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      
+
+      
+
+      /*
+       * =========================================================
+       * FINAL CTA — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".menu-cta-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".menu-cta-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: pageRef,
+    }
+  );
+
   return (
-    <main className="w-full">
+    <main ref={pageRef} className="w-full">
       {/* =====================================================
           HERO
       ====================================================== */}
@@ -17,7 +107,7 @@ export default function MenuPage() {
         className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
         <div className="mx-auto flex max-w-[1360px] items-center justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-          <div className="flex max-w-4xl flex-col items-center">
+          <div className="menu-hero-content flex max-w-4xl flex-col items-center">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
               Kuro Sizzlers
             </span>
@@ -49,7 +139,7 @@ export default function MenuPage() {
       >
         <div className="mx-auto max-w-[1200px] px-5 sm:px-8 lg:px-10">
           {/* Section intro */}
-          <div className="mb-10 text-center sm:mb-12">
+          <div className="menu-section-intro mb-10 text-center sm:mb-12">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
               Our Menu
             </p>
@@ -68,22 +158,23 @@ export default function MenuPage() {
           </div>
 
           {/* PDF */}
-          <MenuPDF />
+          <div className="menu-pdf-container">
+            <MenuPDF />
+          </div>
 
-          <p className="mt-4 text-center font-body text-xs text-on-surface-muted">
+          <p className="menu-pdf-note mt-4 text-center font-body text-xs text-on-surface-muted">
             Scroll inside the menu to explore all pages.
           </p>
         </div>
       </section>
-
-      {/* =====================================================
+            {/* =====================================================
           FINAL CTA
       ====================================================== */}
       <section
         aria-labelledby="menu-cta-title"
         className="w-full bg-mango-gold py-16 text-wok-black sm:py-20 lg:py-24"
       >
-        <div className="mx-auto max-w-[900px] px-5 text-center sm:px-8">
+        <div className="menu-cta-content mx-auto max-w-[900px] px-5 text-center sm:px-8">
           <p className="font-display text-xs font-black uppercase tracking-[0.22em]">
             Experience Kuro
           </p>

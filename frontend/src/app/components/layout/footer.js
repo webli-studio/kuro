@@ -299,7 +299,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={`Order Kuro Sizzlers on ${order.label}`}
-                      className="flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:scale-[1.02] hover:border-primary hover:bg-primary hover:text-wok-black"
+                      className="flex items-center gap-2 rounded-md border border-white/10 bg-white/5 px-3 py-2 font-display text-[10px] font-bold uppercase tracking-wider text-white/60 transition-all duration-300 hover:scale-[1.02] hover:border-primary"
                     >
                       <Image
                         src={order.icon}
