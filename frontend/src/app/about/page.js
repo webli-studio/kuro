@@ -1,5 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const cuisineItems = [
   {
@@ -16,15 +24,349 @@ const cuisineItems = [
   },
 ];
 
-export const metadata = {
-  title: "Our Story | Kuro Sizzlers",
-  description:
-    "Discover the story and philosophy behind Kuro Sizzlers — fire, flavour and craft, brought together through Continental, Chinese and multi-cuisine cooking with an Indian soul.",
-};
 
 export default function OurStoryPage() {
+  const pageRef = useRef(null);
+
+  useGSAP(
+    () => {
+      /*
+       * =========================================================
+       * HERO — PAGE LOAD
+       * =========================================================
+       */
+      const heroTimeline = gsap.timeline({
+        defaults: {
+          ease: "power2.out",
+        },
+      });
+
+      heroTimeline.fromTo(
+        ".about-hero-content > *",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          stagger: 0.12,
+        }
+      );
+
+      /*
+       * =========================================================
+       * INTRODUCTION — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-intro-image",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-intro-image",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-intro-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-intro-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * WHY KURO — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-why-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-why-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * DINING PHILOSOPHY — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-philosophy-heading",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-philosophy-heading",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-philosophy-text",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-philosophy-text",
+            start: "top 84%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-philosophy-card",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-philosophy-card",
+            start: "top 84%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * OUR KITCHEN — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-kitchen-heading",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-kitchen-heading",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-kitchen-item",
+        {
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.65,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-kitchen-item",
+            start: "top 86%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * WHAT WE SERVE — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-food-heading",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-food-heading",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-food-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-food-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * INGREDIENTS / PROMISE — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-promise-card",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.7,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-promise-card",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-promise-item",
+        {
+          opacity: 0,
+          y: 18,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-promise-card",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+
+      gsap.fromTo(
+        ".about-promise-note",
+        {
+          opacity: 0,
+          y: 12,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-promise-note",
+            start: "top 90%",
+            once: true,
+          },
+        }
+      );
+
+      /*
+       * =========================================================
+       * CLOSING CTA — SCROLL
+       * =========================================================
+       */
+      gsap.fromTo(
+        ".about-closing-content",
+        {
+          opacity: 0,
+          y: 25,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".about-closing-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
+    },
+    {
+      scope: pageRef,
+    }
+  );
+
   return (
-    <main className="w-full">
+    <main ref={pageRef} className="w-full">
       {/* =========================================================
           HERO
       ========================================================== */}
@@ -32,11 +374,11 @@ export default function OurStoryPage() {
         aria-labelledby="our-story-title"
         className="w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
-        <div className="mx-auto max-w-[1360px] px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28 flex justify-center items-center">
-          <div className="max-w-4xl flex flex-col items-center">
+        <div className="mx-auto flex max-w-[1360px] items-center justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
+          <div className="about-hero-content flex max-w-4xl flex-col items-center">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
-            Our Story
-          </span>
+              Our Story
+            </span>
 
             <h1
               id="our-story-title"
@@ -48,7 +390,7 @@ export default function OurStoryPage() {
               <span className="text-primary">SIZZLE.</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl font-body text-sm leading-7 text-white/65 sm:text-base text-center">
+            <p className="mt-7 max-w-2xl text-center font-body text-sm leading-7 text-white/65 sm:text-base">
               Kuro Sizzlers is where every plate tells a story of fire,
               flavour, and craft — born from a passion for bold cuisine and
               warm hospitality.
@@ -56,8 +398,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-
-      {/* =========================================================
+            {/* =========================================================
           INTRODUCTION
       ========================================================== */}
       <section
@@ -66,7 +407,7 @@ export default function OurStoryPage() {
       >
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
           {/* Image */}
-          <div className="lg:col-span-5">
+          <div className="about-intro-image lg:col-span-5">
             <div className="relative">
               <div className="relative z-10 overflow-hidden rounded-2xl border-4 border-wok-black bg-wok-black">
                 <Image
@@ -84,7 +425,7 @@ export default function OurStoryPage() {
           </div>
 
           {/* Story */}
-          <div className="lg:col-span-7 lg:pt-8">
+          <div className="about-intro-content lg:col-span-7 lg:pt-8">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
               Where It Begins
             </p>
@@ -100,7 +441,7 @@ export default function OurStoryPage() {
               <p>
                 Welcome to Kuro Sizzlers — where every plate tells a story of
                 fire, flavour, and craft. Born from a passion for bold cuisine
-                and warm hospitality, Kuro is a celebration of the world&apos;s
+                and warm hospitality, Kuro is a celebration of the world's
                 finest culinary traditions, reimagined with an Indian soul.
               </p>
 
@@ -130,7 +471,7 @@ export default function OurStoryPage() {
         className="bg-surface py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-[1000px] px-5 sm:px-8">
-          <div className="border-y border-border-soft py-12 sm:py-16">
+          <div className="about-why-content border-y border-border-soft py-12 sm:py-16">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
               Why Kuro?
             </p>
@@ -145,8 +486,8 @@ export default function OurStoryPage() {
 
             <div className="mt-8 max-w-3xl space-y-6 font-body text-sm leading-8 text-on-surface-muted sm:text-base">
               <p>
-                The name Kuro means &quot;black&quot; in Japanese — a tribute to
-                the iconic cast-iron sizzler plates that represent the heart
+                The name Kuro means "black" in Japanese — a tribute to the
+                iconic cast-iron sizzler plates that represent the heart
                 of the Kuro experience.
               </p>
 
@@ -164,8 +505,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-
-      {/* =========================================================
+            {/* =========================================================
           DINING PHILOSOPHY
       ========================================================== */}
       <section
@@ -173,7 +513,7 @@ export default function OurStoryPage() {
         className="bg-wok-black py-20 text-white sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-[1000px] px-5 sm:px-8">
-          <div className="max-w-3xl">
+          <div className="about-philosophy-heading max-w-3xl">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-primary">
               Our Philosophy
             </p>
@@ -189,7 +529,7 @@ export default function OurStoryPage() {
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16">
-            <div className="font-body text-sm leading-8 text-white/60 sm:text-base">
+            <div className="about-philosophy-text font-body text-sm leading-8 text-white/60 sm:text-base">
               <p>
                 We believe dining is not just about eating — it is about the
                 sizzle, the aroma and the moment of pure delight when the
@@ -197,7 +537,7 @@ export default function OurStoryPage() {
               </p>
             </div>
 
-            <div className="font-body text-sm leading-8 text-white/60 sm:text-base">
+            <div className="about-philosophy-text font-body text-sm leading-8 text-white/60 sm:text-base">
               <p>
                 Every dish is crafted with care and plated with pride. The
                 experience brings together flavour, presentation and the
@@ -207,7 +547,7 @@ export default function OurStoryPage() {
           </div>
 
           <div className="mt-14 grid grid-cols-1 border-t border-white/10 sm:grid-cols-3">
-            <div className="border-b border-white/10 py-7 sm:border-b-0 sm:border-r sm:pr-8">
+            <div className="about-philosophy-card border-b border-white/10 py-7 sm:border-b-0 sm:border-r sm:pr-8">
               <span className="font-display text-3xl font-black text-primary">
                 01
               </span>
@@ -221,7 +561,7 @@ export default function OurStoryPage() {
               </p>
             </div>
 
-            <div className="border-b border-white/10 py-7 sm:border-b-0 sm:px-8 sm:border-r">
+            <div className="about-philosophy-card border-b border-white/10 py-7 sm:border-b-0 sm:px-8 sm:border-r">
               <span className="font-display text-3xl font-black text-primary">
                 02
               </span>
@@ -236,7 +576,7 @@ export default function OurStoryPage() {
               </p>
             </div>
 
-            <div className="py-7 sm:pl-8">
+            <div className="about-philosophy-card py-7 sm:pl-8">
               <span className="font-display text-3xl font-black text-primary">
                 03
               </span>
@@ -252,8 +592,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-
-      {/* =========================================================
+            {/* =========================================================
           OUR KITCHEN
       ========================================================== */}
       <section
@@ -261,7 +600,7 @@ export default function OurStoryPage() {
         className="bg-surface-cream py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
-          <div className="max-w-3xl">
+          <div className="about-kitchen-heading max-w-3xl">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
               Our Kitchen
             </p>
@@ -286,7 +625,7 @@ export default function OurStoryPage() {
             {cuisineItems.map((item, index) => (
               <article
                 key={item.title}
-                className="grid grid-cols-1 gap-4 py-8 sm:grid-cols-[80px_220px_1fr] sm:items-start sm:gap-8"
+                className="about-kitchen-item grid grid-cols-1 gap-4 py-8 sm:grid-cols-[80px_220px_1fr] sm:items-start sm:gap-8"
               >
                 <span className="font-display text-sm font-black text-primary">
                   0{index + 1}
@@ -304,8 +643,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-
-      {/* =========================================================
+            {/* =========================================================
           WHAT WE SERVE
       ========================================================== */}
       <section
@@ -313,7 +651,7 @@ export default function OurStoryPage() {
         className="bg-surface py-20 sm:py-24 lg:py-28"
       >
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
-          <div className="lg:col-span-5">
+          <div className="about-food-heading lg:col-span-5">
             <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-mustard-deep">
               From The Kitchen
             </p>
@@ -328,7 +666,7 @@ export default function OurStoryPage() {
             </h2>
           </div>
 
-          <div className="lg:col-span-7">
+          <div className="about-food-content lg:col-span-7">
             <div className="space-y-6 font-body text-sm leading-8 text-on-surface-muted sm:text-base">
               <p>
                 The menu moves from silky cream soups and crisp Continental
@@ -351,8 +689,7 @@ export default function OurStoryPage() {
           </div>
         </div>
       </section>
-
-      {/* =========================================================
+            {/* =========================================================
           INGREDIENTS / PROMISE
       ========================================================== */}
       <section
@@ -360,9 +697,9 @@ export default function OurStoryPage() {
         className="bg-surface-cream py-20 sm:py-24"
       >
         <div className="mx-auto max-w-[1000px] px-5 sm:px-8">
-          <div className="rounded-2xl bg-wok-black p-7 text-white sm:p-10 lg:p-12">
+          <div className="about-promise-card rounded-2xl bg-wok-black p-7 text-white sm:p-10 lg:p-12">
             <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-              <div>
+              <div className="about-promise-item">
                 <span
                   aria-hidden="true"
                   className="material-symbols-outlined text-[30px] text-primary"
@@ -382,7 +719,7 @@ export default function OurStoryPage() {
                 </p>
               </div>
 
-              <div>
+              <div className="about-promise-item">
                 <span
                   aria-hidden="true"
                   className="material-symbols-outlined text-[30px] text-primary"
@@ -399,7 +736,7 @@ export default function OurStoryPage() {
                 </p>
               </div>
 
-              <div>
+              <div className="about-promise-item">
                 <span
                   aria-hidden="true"
                   className="material-symbols-outlined text-[30px] text-primary"
@@ -418,7 +755,7 @@ export default function OurStoryPage() {
             </div>
           </div>
 
-          <p className="mt-5 text-center font-body text-xs text-on-surface-muted">
+          <p className="about-promise-note mt-5 text-center font-body text-xs text-on-surface-muted">
             No alcohol is used in cooking. Menu items are subject to
             availability.
           </p>
@@ -432,7 +769,7 @@ export default function OurStoryPage() {
         aria-labelledby="closing-title"
         className="bg-mango-gold py-20 text-wok-black sm:py-24 lg:py-28"
       >
-        <div className="mx-auto max-w-[900px] px-5 text-center sm:px-8">
+        <div className="about-closing-content mx-auto max-w-[900px] px-5 text-center sm:px-8">
           <p className="font-display text-xs font-black uppercase tracking-[0.22em]">
             The Kuro Experience
           </p>

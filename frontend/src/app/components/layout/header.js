@@ -110,8 +110,8 @@ export default function Header() {
     <>
       {/* Announcement Bar */}
       <div ref={headerAnnouncement} className="header-announcement bg-wok-black px-4 py-2 text-xs font-semibold text-white border-b border-primary/20">
-        <div className="announcement mx-auto flex max-w-[1360px] items-center justify-center">
-          <span className="text-center font-bold text-chili-red opacity-0">
+        <div className="announcement mx-auto flex max-w-[1360px] opacity-0 items-center justify-center">
+          <span className="text-center font-bold text-chili-red">
             Where Every Plate Tells a Story of Fire, Flavour, and Craft.
           </span>
         </div>

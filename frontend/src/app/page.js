@@ -1,6 +1,6 @@
 "use client"
 
-
+import { useEffect } from "react";
 import Hero from "./components/landing/hero";
 import OurStoryPreview from "./components/landing/storyPreview";
 import FoodExperience from "./components/landing/foodExperience";
@@ -12,6 +12,13 @@ import ReservationCTA from "./components/landing/reservationCTA";
 
 
 export default function Home() {
+
+  // page opens on the top
+  useEffect(() => {
+  if (typeof window !== "undefined") {
+    window.scrollTo(0, 0);
+  }
+},[]) 
   return (
     <>
     <section className="relative w-screen bg-wok-black">
