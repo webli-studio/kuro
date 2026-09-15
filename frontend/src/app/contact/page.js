@@ -287,7 +287,7 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
-                  className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-primary-hover focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-wok-black sm:w-auto"
+                  className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-primary-hover sm:w-auto"
                 >
                   Send Enquiry
                   <span className="material-symbols-outlined text-[19px]">
@@ -307,7 +307,7 @@ export default function ContactPage() {
       {/* BOTTOM CTA */}
       <section
         aria-labelledby="contact-cta-title"
-        className="bg-primary px-5 py-16 text-wok-black sm:px-8 sm:py-20 lg:px-10 lg:py-24"
+        className="bg-mango-gold px-5 py-16 text-wok-black sm:px-8 sm:py-20 lg:px-10 lg:py-24"
       >
         <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
           <p className="font-body text-xs font-black uppercase tracking-[0.2em]">
@@ -328,7 +328,7 @@ export default function ContactPage() {
           <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
             <Link
               href="/menu"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-primary transition hover:bg-charcoal-night"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition hover:bg-charcoal-night hover:text-white"
             >
               Explore Menu
               <span className="material-symbols-outlined text-[18px]">
@@ -338,7 +338,7 @@ export default function ContactPage() {
 
             <Link
               href="/gallery"
-              className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-wok-black hover:text-primary"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-wok-black hover:text-mango-gold"
             >
               View Gallery
             </Link>

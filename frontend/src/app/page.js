@@ -17,9 +17,10 @@ export default function Home() {
     <section className="relative w-screen">
       <Hero />
       <OurStoryPreview />
-      <FoodExperience />
-      <SignatureDishes />
+      {/* <FoodExperience /> */}
       <ExperiencePreview />
+      <SignatureDishes />
+      
       <GalleryPreview />
       <ReservationCTA />
     </section>

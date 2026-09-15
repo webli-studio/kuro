@@ -67,7 +67,7 @@ export default function Hero() {
               MEETS THE SIZZLE
             </span>
             <br />
-            AT KURO Sizzlers.
+            AT KURO SIZZLERS.
           </h1>
 
           <p className="text-base sm:text-lg text-zinc-300 max-w-2xl font-body leading-relaxed">

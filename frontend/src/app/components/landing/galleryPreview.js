@@ -3,40 +3,40 @@ import Link from "next/link";
 
 const galleryItems = [
   {
-    title: "Signature Sizzlers",
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90",
+      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=90",
     alt: "Sizzling dish served at Kuro Sizzlers",
+    ratio: "aspect-[4/5]",
   },
   {
-    title: "The Kuro Atmosphere",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=90",
+      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=90",
     alt: "Restaurant dining atmosphere",
+    ratio: "aspect-[4/3]",
   },
   {
-    title: "Crafted Cuisine",
     image:
-      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1200&q=90",
+      "https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1600&q=90",
     alt: "Freshly prepared Continental dish",
+    ratio: "aspect-square",
   },
   {
-    title: "Wok-Fired Flavours",
     image:
-      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=90",
+      "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1600&q=90",
     alt: "Wok-tossed Asian-inspired dish",
+    ratio: "aspect-[3/4]",
   },
   {
-    title: "A Table Full of Flavour",
     image:
-      "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=90",
-    alt: "Restaurant dishes arranged for a shared meal",
+      "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1600&q=90",
+    alt: "Restaurant food prepared for sharing",
+    ratio: "aspect-square",
   },
   {
-    title: "Fire, Flavour & Craft",
     image:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1200&q=90",
-    alt: "Warm restaurant interior at Kuro Sizzlers",
+      "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=90",
+    alt: "Freshly prepared restaurant dish",
+    ratio: "aspect-[4/5]",
   },
 ];
 
@@ -44,20 +44,21 @@ export default function GalleryPreview() {
   return (
     <section
       id="gallery-section"
-      className="w-full bg-surface-cream py-20"
+      className="w-full bg-wok-black py-20 sm:py-24 lg:py-28"
       aria-labelledby="gallery-heading"
     >
-      <div className="max-w-[1360px] mx-auto px-4 sm:px-8 flex flex-col gap-8">
+      <div className="mx-auto flex max-w-[1360px] flex-col gap-10 px-5 sm:px-8 lg:px-10">
+
         {/* Section Header */}
-        <header className="flex flex-col md:flex-row md:items-end justify-between gap-4">
-          <div className="flex flex-col gap-1">
-            <span className="font-display font-black text-xs text-wok-black uppercase tracking-[0.25em]">
+        <header className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <span className="font-display text-xs font-black uppercase tracking-[0.25em] text-primary">
               Visual Feed
             </span>
 
             <h2
               id="gallery-heading"
-              className="font-display text-3xl sm:text-4xl font-black text-wok-black tracking-tight uppercase"
+              className="mt-2 font-display text-3xl font-black uppercase tracking-tight text-white sm:text-4xl"
             >
               A VISUAL TASTE
             </h2>
@@ -65,39 +66,33 @@ export default function GalleryPreview() {
 
           <Link
             href="/gallery"
-            className="inline-flex items-center gap-1.5 font-display font-black text-xs uppercase tracking-wider text-wok-black hover:text-primary transition-colors"
+            className="inline-flex w-fit items-center gap-2 font-display text-xs font-black uppercase tracking-wider text-primary transition-colors hover:text-mango-gold"
           >
-            <span>View Full Photography Gallery</span>
+            <span>View Full Gallery</span>
 
-            <span
-              className="material-symbols-outlined text-[18px]"
-              aria-hidden="true"
-            >
-              photo_camera
+            <span aria-hidden="true" className="text-lg">
+              →
             </span>
           </Link>
         </header>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {galleryItems.map((item) => (
+        {/* Pinterest-style Preview */}
+        <div className="columns-2 gap-3 sm:columns-3 sm:gap-4 lg:gap-5">
+          {galleryItems.map((item, index) => (
             <article
-              key={item.title}
-              className="group relative rounded-xl overflow-hidden aspect-square bg-zinc-900 border-2 border-border-soft"
+              key={`${item.image}-${index}`}
+              className="mb-3 break-inside-avoid overflow-hidden rounded-xl sm:mb-4 lg:mb-5"
             >
-              <Image
-                src={item.image}
-                alt={item.alt}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                className="object-cover transition-transform duration-700 group-hover:scale-110"
-              />
-
-              {/* Hover Caption */}
-              <div className="absolute inset-0 bg-gradient-to-t from-wok-black via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                <span className="text-primary font-display font-bold text-sm">
-                  {item.title}
-                </span>
+              <div
+                className={`relative w-full overflow-hidden ${item.ratio}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 33vw"
+                  className="object-cover transition-transform duration-700 ease-out hover:scale-105"
+                />
               </div>
             </article>
           ))}
