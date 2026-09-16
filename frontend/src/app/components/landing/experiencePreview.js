@@ -6,6 +6,8 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import SmokeEffect from "../effects/smokeEffect"
+  
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -118,6 +120,7 @@ export default function ExperiencePreview() {
       className="relative w-full py-20 overflow-hidden bg-charcoal-night"
       aria-labelledby="experience-heading"
     >
+      <SmokeEffect />
       {/* Atmospheric Background */}
       <div className="absolute inset-0 w-full h-full">
         <Image

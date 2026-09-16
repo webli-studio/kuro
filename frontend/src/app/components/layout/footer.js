@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import SmokeEffect from "../effects/smokeEffect"
+
 
 const exploreLinks = [
   { label: "Home", href: "/" },
@@ -53,9 +55,10 @@ export default function Footer() {
   return (
     <>
       <footer
-        className="w-full bg-wok-black text-white"
+        className="relative overflow-hidden w-full bg-wok-black text-white"
         id="footer-section"
       >
+        <SmokeEffect />
         <div className="mx-auto max-w-[1360px] px-4 pt-16 pb-12 sm:px-8">
           {/* Main Footer Grid */}
           <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
