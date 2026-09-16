@@ -1,6 +1,6 @@
 "use client";
 
-import MenuPDF from "../components/menuPDF";
+import MenuPDF from "../components/pdfDATA/menuPDF";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";

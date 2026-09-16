@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import SmokeEffect from "../effects/smokeEffect"
 
 export default function Hero() {
   const heroRef = useRef(null);
@@ -119,6 +120,12 @@ export default function Hero() {
       className="relative w-full overflow-hidden bg-wok-black"
       aria-labelledby="hero-heading"
     >
+      <SmokeEffect
+  count={6}
+  color="rgba(218, 212, 212, 0.09)"
+  opacity={0.8}
+  speed={0.65}
+/>
       {/* Background Image — ALWAYS VISIBLE */}
       <div className="absolute inset-0 h-full w-full">
         <Image

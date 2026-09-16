@@ -119,3 +119,44 @@ button,
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+@keyframes smoke-rise {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8) rotate(0deg);
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.5;
+  }
+
+  40% {
+    transform: translate3d(
+      calc(var(--smoke-drift) * 0.4),
+      -35vh,
+      0
+    ) scale(1.1) rotate(10deg);
+
+    opacity: 0.35;
+  }
+
+  70% {
+    transform: translate3d(
+      calc(var(--smoke-drift) * -0.5),
+      -70vh,
+      0
+    ) scale(var(--smoke-scale)) rotate(-10deg);
+
+    opacity: 0.2;
+  }
+
+  100% {
+    transform: translate3d(
+      var(--smoke-drift),
+      -110vh,
+      0
+    ) scale(calc(var(--smoke-scale) * 1.2)) rotate(15deg);
+
+    opacity: 0;
+  }
+}
