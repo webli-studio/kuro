@@ -1,11 +1,23 @@
 "use client";
 
-import MenuPDF from "../components/pdfDATA/menuPDF";
 import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import SmokeEffect from "../components/effects/smokeEffect";
+import dynamic from "next/dynamic";
+
+const MenuPDF = dynamic(
+  () => import("../components/pdfDATA/menuPDF"),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex min-h-[500px] items-center justify-center rounded-2xl bg-wok-black px-6 text-center text-sm font-bold text-primary">
+        Loading menu...
+      </div>
+    ),
+  }
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
