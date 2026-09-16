@@ -6,7 +6,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
-import SmokeEffect from "../effects/smokeEffect"
 
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -93,7 +92,6 @@ export default function GalleryPreview() {
       className="relative overflow-hidden w-full bg-wok-black py-20 sm:py-24 lg:py-28"
       aria-labelledby="gallery-heading"
     >
-      <SmokeEffect />
       <div className="mx-auto flex max-w-[1360px] flex-col gap-10 px-5 sm:px-8 lg:px-10">
 
         {/* Section Header */}
