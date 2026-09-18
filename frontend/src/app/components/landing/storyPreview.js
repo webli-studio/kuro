@@ -162,7 +162,7 @@ export default function OurStoryPreview() {
             {/* CTA */}
             <div className="pt-2">
               <Link
-                href="/our-story"
+                href="/about"
                 className="group inline-flex items-center gap-2 font-display font-black text-sm uppercase tracking-wider text-wok-black hover:text-primary transition-colors"
               >
                 <span>Discover Our Story</span>
@@ -205,7 +205,7 @@ export default function OurStoryPreview() {
                 </span>
 
                 <span className="font-display text-xs font-bold text-zinc-500 uppercase mt-1">
-                  Halal Meat
+                  Halal Ingredients
                 </span>
               </div>
 
