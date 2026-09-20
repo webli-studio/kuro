@@ -685,84 +685,13 @@ export default function OurStoryPage() {
               <p>
                 Every recipe is refined around flavour, with the kitchen
                 working with fresh local produce and premium
-                Halal-certified ingredients.
+                ingredients.
               </p>
             </div>
           </div>
         </div>
       </section>
-            {/* =========================================================
-          INGREDIENTS / PROMISE
-      ========================================================== */}
-      <section
-        aria-labelledby="promise-title"
-        className="bg-surface-cream py-20 sm:py-24"
-      >
-        <div className="mx-auto max-w-[1000px] px-5 sm:px-8">
-          <div className="about-promise-card rounded-2xl bg-wok-black p-7 text-white sm:p-10 lg:p-12">
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
-              <div className="about-promise-item">
-                <span
-                  aria-hidden="true"
-                  className="material-symbols-outlined text-[30px] text-primary"
-                >
-                  verified
-                </span>
-
-                <h2
-                  id="promise-title"
-                  className="mt-4 font-display text-lg font-black uppercase"
-                >
-                  Premium Ingredients
-                </h2>
-
-                <p className="mt-2 font-body text-sm leading-6 text-white/50">
-                  Crafted using premium Halal-certified ingredients.
-                </p>
-              </div>
-
-              <div className="about-promise-item">
-                <span
-                  aria-hidden="true"
-                  className="material-symbols-outlined text-[30px] text-primary"
-                >
-                  restaurant
-                </span>
-
-                <h3 className="mt-4 font-display text-lg font-black uppercase">
-                  100% Halal Ingredients
-                </h3>
-
-                <p className="mt-2 font-body text-sm leading-6 text-white/50">
-                  All meats served at Kuro Sizzlers are 100% Halal.
-                </p>
-              </div>
-
-              <div className="about-promise-item">
-                <span
-                  aria-hidden="true"
-                  className="material-symbols-outlined text-[30px] text-primary"
-                >
-                  eco
-                </span>
-
-                <h3 className="mt-4 font-display text-lg font-black uppercase">
-                  Fresh Produce
-                </h3>
-
-                <p className="mt-2 font-body text-sm leading-6 text-white/50">
-                  Recipes are refined with fresh local produce.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <p className="about-promise-note mt-5 text-center font-body text-xs text-on-surface-muted">
-            No alcohol is used in cooking. Menu items are subject to
-            availability.
-          </p>
-        </div>
-      </section>
+            
 
       {/* =========================================================
           CLOSING CTA

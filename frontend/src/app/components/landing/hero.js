@@ -161,15 +161,7 @@ export default function Hero() {
             Fire • Flavour • Craft
           </span>
 
-          <span className="hidden items-center gap-1 rounded bg-white/5 px-3 py-1 font-display text-xs text-zinc-300 sm:inline-flex">
-            <span
-              aria-hidden="true"
-              className="text-[14px] text-primary"
-            >
-              ✓
-            </span>
-            100% Halal
-          </span>
+          
 
         </div>
 
@@ -285,30 +277,7 @@ export default function Hero() {
                 Multi-cuisine flavours with an Indian soul
               </span>
             </div>
-          </div>
-
-          {/* Feature 3 */}
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-primary font-bold text-wok-black">
-              <span
-                aria-hidden="true"
-                className="text-[20px]"
-              >
-                ✓
-              </span>
-            </div>
-
-            <div>
-              <span className="block font-display text-xs font-bold uppercase tracking-wider text-white">
-                100% Halal
-              </span>
-
-              <span className="text-xs text-zinc-400">
-                Premium Halal-certified ingredients
-              </span>
-            </div>
-          </div>
-
+          </div>          
         </div>
       </div>
     </section>

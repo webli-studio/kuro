@@ -7,7 +7,6 @@ const exploreLinks = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/about" },
   { label: "Menu", href: "/menu" },
-  { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
 

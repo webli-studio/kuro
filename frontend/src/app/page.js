@@ -23,9 +23,9 @@ export default function Home() {
     <section className="relative w-screen bg-wok-black">
       <Hero />
       <OurStoryPreview />
-      <ExperiencePreview />
-      <SignatureDishes />
-      <GalleryPreview />
+      {/* <ExperiencePreview /> */}
+      {/* <SignatureDishes /> */}
+      {/* <GalleryPreview /> */}
       <ReservationCTA />
     </section>
     </>

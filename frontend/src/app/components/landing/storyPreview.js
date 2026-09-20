@@ -176,7 +176,7 @@ export default function OurStoryPreview() {
               </Link>
             </div>
 
-            {/* Feature Counters */}
+            {/* Feature Counters
             <div className="story-preview-stats grid grid-cols-3 gap-4 pt-4 mt-2 bg-white p-6 rounded-xl border border-border-soft shadow-sm">
 
               <div className="story-preview-stat flex flex-col border-r border-zinc-200 pr-2">
@@ -209,7 +209,7 @@ export default function OurStoryPreview() {
                 </span>
               </div>
 
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

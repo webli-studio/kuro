@@ -11,7 +11,6 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Our Story", href: "/about" },
   { label: "Menu", href: "/menu" },
-  { label: "Gallery", href: "/gallery" },
 ];
 
 export default function Header() {
