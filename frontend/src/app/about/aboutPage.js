@@ -375,7 +375,13 @@ export default function OurStoryPage() {
         aria-labelledby="our-story-title"
         className="relative overflow-hidden w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
       >
-        <SmokeEffect />
+        {/* Smoke */}
+      <SmokeEffect
+  count={6}
+  color="rgba(218, 212, 212, 0.09)"
+  opacity={0.8}
+  speed={0.65}
+/>
         <div className="mx-auto flex max-w-[1360px] items-center justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
           <div className="about-hero-content flex max-w-4xl flex-col items-center">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
@@ -409,7 +415,7 @@ export default function OurStoryPage() {
       >
         <div className="mx-auto grid max-w-[1180px] grid-cols-1 gap-12 px-5 sm:px-8 lg:grid-cols-12 lg:gap-20">
           {/* Image */}
-          <div className="about-intro-image lg:col-span-5">
+          {/* <div className="about-intro-image lg:col-span-5">
             <div className="relative">
               <div className="relative z-10 overflow-hidden rounded-2xl border-4 border-wok-black bg-wok-black">
                 <Image
@@ -424,7 +430,7 @@ export default function OurStoryPage() {
 
               <div className="absolute -bottom-4 -right-4 h-full w-full rounded-2xl bg-primary" />
             </div>
-          </div>
+          </div> */}
 
           {/* Story */}
           <div className="about-intro-content lg:col-span-7 lg:pt-8">

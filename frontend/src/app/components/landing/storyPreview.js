@@ -100,7 +100,7 @@ export default function OurStoryPreview() {
       <div className="max-w-[1360px] mx-auto px-4 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
 
-          {/* Image */}
+          {/* Image
           <div className="lg:col-span-6 relative">
             <div className="story-preview-image relative z-10 rounded-2xl overflow-hidden shadow-2xl border-4 border-wok-black bg-wok-black">
               <Image
@@ -111,7 +111,7 @@ export default function OurStoryPreview() {
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 className="w-full aspect-[4/3] object-cover transition-transform duration-700 hover:scale-105"
               />
-            </div>
+            </div> */}
 
             {/* Primary Accent Backdrop */}
             <div className="absolute -bottom-4 -right-4 w-full h-full bg-primary rounded-2xl -z-0" />
