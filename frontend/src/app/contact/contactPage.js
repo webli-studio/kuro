@@ -235,7 +235,7 @@ export default function ContactPage() {
       {/* HERO */}
       <section
         aria-labelledby="contact-title"
-        className="relative overflow-hidden w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-32"
+        className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
       >
         {/* Smoke */}
       <SmokeEffect
