@@ -64,7 +64,7 @@ export default function Footer() {
   opacity={0.8}
   speed={0.65}
 />
-        <div className="mx-auto max-w-[1360px] px-4 pt-16 pb-12 sm:px-8">
+        <div className="relative z-10 mx-auto max-w-[1360px] px-4 pt-16 pb-12 sm:px-8">
           {/* Main Footer Grid */}
           <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
             {/* =========================================================

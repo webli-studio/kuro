@@ -244,7 +244,7 @@ export default function ContactPage() {
   opacity={0.8}
   speed={0.65}
 />
-        <div className="mx-auto flex max-w-[1360px] flex-col items-center">
+        <div className="relative z-10 mx-auto flex max-w-[1360px] flex-col items-center">
           <div className="contact-hero-content flex flex-col items-center">
             <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-primary">
               Reservations & Enquiries
