@@ -521,8 +521,8 @@ export default function OurStoryPage() {
         className="relative overflow-hidden bg-mango-gold py-24 text-wok-black sm:py-28 lg:py-32"
       >
 
-        <div className="pointer-events-none absolute right-[-10%] top-1/2 -translate-y-1/2 select-none font-display text-[18rem] font-black leading-none text-wok-black/[0.035]">
-          KURO
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2   -translate-y-1/2 select-none font-display text-[12rem] font-black leading-none text-wok-black/[0.035] text-center">
+          KURO<br />SIZZLERS
         </div>
 
         <div className="about-reveal relative z-10 mx-auto max-w-[900px] px-5 text-center sm:px-8">

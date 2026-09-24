@@ -6,50 +6,31 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function ReservationCTA() {
   const sectionRef = useRef(null);
 
   useGSAP(
     () => {
-      gsap.from(".reservation-heading > *", {
-        opacity: 0,
-        y: 20,
-        duration: 0.65,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".reservation-heading",
-          start: "top 82%",
-          once: true,
+      gsap.fromTo(
+        ".reservation-content",
+        {
+          opacity: 0,
+          y: 25,
         },
-      });
-
-      gsap.from(".reservation-card", {
-        opacity: 0,
-        y: 25,
-        duration: 0.7,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".reservation-card",
-          start: "top 85%",
-          once: true,
-        },
-      });
-
-      gsap.from(".reservation-supporting > *", {
-        opacity: 0,
-        y: 15,
-        duration: 0.55,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: ".reservation-supporting",
-          start: "top 90%",
-          once: true,
-        },
-      });
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.75,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: ".reservation-content",
+            start: "top 82%",
+            once: true,
+          },
+        }
+      );
     },
     {
       scope: sectionRef,
@@ -60,89 +41,55 @@ export default function ReservationCTA() {
     <section
       ref={sectionRef}
       id="reserve-section"
-      className="w-full bg-mango-gold py-20 text-wok-black relative overflow-hidden"
       aria-labelledby="reservation-heading"
+      className="relative overflow-hidden bg-mango-gold py-24 text-wok-black sm:py-28 lg:py-32"
     >
-      <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-8 flex flex-col items-center text-center gap-8">
+      {/* Background Typography */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display text-[12rem] font-black leading-none text-wok-black/[0.035] text-center">
+        KURO<br />SIZZLERS
+      </div>
+
+      {/* Content */}
+      <div className="reservation-content relative z-10 mx-auto max-w-[900px] px-5 text-center sm:px-8">
+        {/* Eyebrow */}
+        <p className="font-display text-xs font-black uppercase tracking-[0.25em]">
+          Reservations &amp; Bookings
+        </p>
+
         {/* Heading */}
-        <header className="reservation-heading flex flex-col items-center gap-2 max-w-2xl">
-          <span className="px-4 py-1 rounded-full bg-wok-black text-mango-gold font-display font-black text-xs uppercase tracking-widest shadow">
-            Reservations &amp; Bookings
-          </span>
+        <h2
+          id="reservation-heading"
+          className="mt-5 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.04em] sm:text-6xl lg:text-8xl"
+        >
+          YOUR TABLE
+          <br />
+          IS
+          <br />
+          <span className="text-white">WAITING.</span>
+        </h2>
 
-          <h2
-            id="reservation-heading"
-            className="font-display text-3xl sm:text-5xl font-black tracking-tight text-wok-black uppercase mt-2"
-          >
-            YOUR TABLE IS WAITING.
-          </h2>
+        {/* Description */}
+        <p className="mx-auto mt-7 max-w-2xl font-body text-sm leading-7 text-wok-black/65 sm:text-base">
+          Ready to experience Kuro? Get in touch with us to plan your visit,
+          make a reservation, or enquire about your next gathering.
+        </p>
 
-          <p className="text-sm sm:text-base font-medium text-wok-black/80 max-w-xl">
-            Ready to experience Kuro? Get in touch with us to plan your visit,
-            make a reservation, or enquire about your next gathering.
-          </p>
-        </header>
-
-        {/* Final CTA Card */}
-        <div className="reservation-card w-full bg-wok-black rounded-2xl p-6 sm:p-8 shadow-2xl text-white border-2 border-wok-black">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
-            <div className="flex flex-col gap-2">
-              <span className="font-display text-xs font-black text-primary uppercase tracking-[0.2em]">
-                Ready when you are
-              </span>
-
-              <h3 className="font-display text-xl sm:text-2xl font-black uppercase">
-                LET&apos;S MAKE YOUR NEXT MEAL MEMORABLE.
-              </h3>
-
-              <p className="text-sm text-zinc-400 max-w-xl">
-                Contact Kuro Sizzlers for reservations, enquiries, and
-                information about your visit.
-              </p>
-            </div>
-
-            <Link
-              href="/contact"
-              className="shrink-0 inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl bg-primary hover:bg-primary-hover text-mango-gold font-display font-black text-xs uppercase tracking-widest transition-colors shadow-lg"
-            >
-              <span>Book Your Table</span>
-
-              <span
-                className="material-symbols-outlined text-[18px]"
-                aria-hidden="true"
-              >
-                arrow_forward
-              </span>
-            </Link>
-          </div>
-        </div>
-
-        {/* Supporting CTA */}
-        <div className="reservation-supporting flex flex-wrap items-center justify-center gap-6 text-wok-black font-bold text-xs uppercase tracking-wider">
+        {/* Actions */}
+        <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
           <Link
             href="/contact"
-            className="hover:text-white flex items-center gap-1 transition-colors"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition-all duration-300 hover:-translate-y-1 hover:bg-charcoal-night"
           >
-            <span
-              className="material-symbols-outlined text-[16px]"
-              aria-hidden="true"
-            >
-              call
-            </span>
-            <span>Reservations &amp; Enquiries</span>
+            Book Your Table
+
+            <span aria-hidden="true">→</span>
           </Link>
 
           <Link
-            href="/contact"
-            className="hover:text-white flex items-center gap-1 transition-colors underline underline-offset-4"
+            href="/menu"
+            className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-wok-black transition-all duration-300 hover:-translate-y-1 hover:bg-wok-black hover:text-primary"
           >
-            <span
-              className="material-symbols-outlined text-[16px]"
-              aria-hidden="true"
-            >
-              mail
-            </span>
-            <span>Contact Kuro Sizzlers</span>
+            Explore Menu
           </Link>
         </div>
       </div>

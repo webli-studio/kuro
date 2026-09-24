@@ -539,47 +539,67 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-            {/* BOTTOM CTA */}
-      <section
-        aria-labelledby="contact-cta-title"
-        className="bg-mango-gold px-5 py-16 text-wok-black sm:px-8 sm:py-20 lg:px-10 lg:py-24"
+            {/* =========================================================
+    BOTTOM CTA
+========================================================== */}
+<section
+  aria-labelledby="contact-cta-title"
+  className="relative overflow-hidden bg-mango-gold py-24 text-wok-black sm:py-28 lg:py-32"
+>
+  {/* Background Typography */}
+  <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display text-[12rem] font-black leading-none text-wok-black/[0.035] text-center">
+    KURO<br />SIZZLERS
+  </div>
+
+  {/* Content */}
+  <div className="contact-bottom-cta relative z-10 mx-auto max-w-[900px] px-5 text-center sm:px-8">
+    {/* Eyebrow */}
+    <p className="font-display text-xs font-black uppercase tracking-[0.25em]">
+      Explore More
+    </p>
+
+    {/* Heading */}
+    <h2
+      id="contact-cta-title"
+      className="mt-5 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.04em] sm:text-6xl lg:text-8xl"
+    >
+      EXPERIENCE
+      <br />
+      THE
+      <br />
+      <span className="text-white">
+        SIZZLE.
+      </span>
+    </h2>
+
+    {/* Description */}
+    <p className="mx-auto mt-7 max-w-2xl font-body text-sm leading-7 text-wok-black/65 sm:text-base">
+      Explore our menu, discover the flavours and experience what makes
+      every meal at Kuro Sizzlers memorable.
+    </p>
+
+    {/* Actions */}
+    <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+      <Link
+        href="/menu"
+        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition-all duration-300 hover:-translate-y-1 hover:bg-charcoal-night"
       >
-        <div className="contact-bottom-cta mx-auto flex max-w-4xl flex-col items-center text-center">
-          <p className="font-body text-xs font-black uppercase tracking-[0.2em]">
-            Explore More
-          </p>
+        Explore Menu
 
-          <h2
-            id="contact-cta-title"
-            className="mt-3 font-display text-3xl font-extrabold uppercase leading-tight sm:text-4xl lg:text-5xl"
-          >
-            READY TO EXPERIENCE KURO?
-          </h2>
+        <span aria-hidden="true">
+          →
+        </span>
+      </Link>
 
-          <p className="mt-4 max-w-xl font-body text-sm leading-7 text-wok-black/70 sm:text-base">
-            Explore our menu and discover the flavours waiting for you.
-          </p>
-
-          <div className="mt-7 flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <Link
-              href="/menu"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition hover:bg-charcoal-night hover:text-white"
-            >
-              Explore Menu
-              <span className="material-symbols-outlined text-[18px]">
-                arrow_forward
-              </span>
-            </Link>
-
-            <Link
-              href="/gallery"
-              className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-wok-black hover:text-mango-gold"
-            >
-              View Gallery
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Link
+        href="/gallery"
+        className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-wok-black transition-all duration-300 hover:-translate-y-1 hover:bg-wok-black hover:text-primary"
+      >
+        View Gallery
+      </Link>
+    </div>
+  </div>
+</section>
     </main>
   );
 }
