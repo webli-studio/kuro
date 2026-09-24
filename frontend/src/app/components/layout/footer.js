@@ -60,7 +60,6 @@ export default function Footer() {
         {/* Smoke */}
       <SmokeEffect
   count={6}
-  color="rgba(218, 212, 212, 0.09)"
   opacity={0.8}
   speed={0.65}
 />
