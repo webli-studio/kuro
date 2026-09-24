@@ -103,42 +103,66 @@ export default function MenuPage() {
   return (
     <main ref={pageRef} className="w-full">
       {/* =====================================================
-          HERO
-      ====================================================== */}
-      <section
-        aria-labelledby="menu-title"
-        className="relative overflow-hidden w-full bg-wok-black px-5 pb-16 pt-24 text-white sm:px-8 sm:pb-20 sm:pt-28 lg:px-10 lg:pb-24 lg:pt-0"
+    HERO
+====================================================== */}
+<section
+  aria-labelledby="menu-title"
+  className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
+>
+  {/* Smoke */}
+    <SmokeEffect
+      count={6}
+      color="rgba(218, 212, 212, 0.09)"
+      opacity={0.8}
+      speed={0.65}
+    />
+
+  {/* Ambient gold glow */}
+  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-[140px]" />
+
+  {/* Fine editorial grid */}
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-50" />
+
+  {/* Hero content */}
+  <div className="relative z-10 mx-auto w-full max-w-[1360px]">
+    <div className="menu-hero-content mx-auto flex max-w-5xl flex-col items-center text-center">
+
+      {/* Eyebrow */}
+      <span className="inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-[10px] font-black uppercase tracking-[0.25em] text-mango-gold sm:text-xs">
+        Kuro Sizzlers
+      </span>
+
+      {/* Heading */}
+      <h1
+        id="menu-title"
+        className="mt-7 font-display text-[clamp(3.5rem,8vw,7.5rem)] font-black uppercase leading-[0.88] tracking-[-0.055em]"
       >
-        {/* Smoke */}
-      <SmokeEffect
-  count={6}
-  color="rgba(218, 212, 212, 0.09)"
-  opacity={0.8}
-  speed={0.65}
-/>
-        <div className="mx-auto flex max-w-[1360px] items-center justify-center px-5 py-20 sm:px-8 sm:py-24 lg:px-10 lg:py-28">
-          <div className="menu-hero-content flex max-w-4xl flex-col items-center">
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-mango-gold/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-mango-gold">
-              Kuro Sizzlers
-            </span>
+        EXPLORE THE
+        <br />
+        <span className="text-primary">KURO MENU.</span>
+      </h1>
 
-            <h1
-              id="menu-title"
-              className="text-center font-display text-4xl font-black uppercase leading-[1.02] tracking-tight sm:text-5xl lg:text-7xl"
-            >
-              EXPLORE THE
-              <br />
-              <span className="text-primary">KURO MENU.</span>
-            </h1>
+      {/* Description */}
+      <p className="mt-8 max-w-2xl font-body text-sm leading-7 text-white/55 sm:text-base">
+        Discover Continental, Chinese and Multi-Cuisine favourites,
+        signature sizzlers, wok creations, pizzas, pastas and indulgent
+        desserts.
+      </p>
 
-            <p className="mt-7 max-w-2xl text-center font-body text-sm leading-7 text-white/65 sm:text-base">
-              Discover Continental, Chinese and Multi-Cuisine favourites,
-              signature sizzlers, wok creations, pizzas, pastas and indulgent
-              desserts.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Decorative divider */}
+      <div className="mt-12 flex items-center gap-4">
+        <span className="h-px w-16 bg-primary/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <span className="h-px w-16 bg-primary/50" />
+      </div>
+    </div>
+  </div>
+
+  {/* Scroll indicator */}
+  <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-display text-[9px] font-bold uppercase tracking-[0.35em] text-white/25">
+    Scroll to discover
+  </span>
+</section>
 
       {/* =====================================================
           MENU PDF

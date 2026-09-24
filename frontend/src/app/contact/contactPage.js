@@ -233,39 +233,67 @@ export default function ContactPage() {
   return (
     <main ref={pageRef} className="w-full">
       {/* HERO */}
-      <section
-        aria-labelledby="contact-title"
-        className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
+<section
+  aria-labelledby="contact-title"
+  className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
+>
+  {/* Smoke */}
+  <SmokeEffect
+    count={6}
+    color="rgba(218, 212, 212, 0.09)"
+    opacity={0.8}
+    speed={0.65}
+  />
+
+  {/* Ambient Glow */}
+  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-[130px]" />
+
+  {/* Subtle Grid */}
+  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-50" />
+
+  {/* Content */}
+  <div className="relative z-10 mx-auto w-full max-w-[1360px]">
+    <div className="contact-hero-content mx-auto flex max-w-5xl flex-col items-center text-center">
+
+      {/* Eyebrow */}
+      <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-2 font-body text-[10px] font-black uppercase tracking-[0.25em] text-primary sm:text-xs">
+        Reservations & Enquiries
+      </span>
+
+      {/* Heading */}
+      <h1
+        id="contact-title"
+        className="mt-7 font-display text-[clamp(3.5rem,8vw,7.5rem)] font-black uppercase leading-[0.88] tracking-[-0.055em]"
       >
-        {/* Smoke */}
-      <SmokeEffect
-  count={6}
-  color="rgba(218, 212, 212, 0.09)"
-  opacity={0.8}
-  speed={0.65}
-/>
-        <div className="relative z-10 mx-auto flex max-w-[1360px] flex-col items-center">
-          <div className="contact-hero-content flex flex-col items-center">
-            <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/40 bg-primary/10 px-4 py-2 font-body text-xs font-black uppercase tracking-[0.16em] text-primary">
-              Reservations & Enquiries
-            </span>
+        LET&apos;S TALK
+        <br />
+        <span className="text-primary">
+          KURO SIZZLERS.
+        </span>
+      </h1>
 
-            <h1
-              id="contact-title"
-              className="max-w-4xl text-center font-display text-4xl font-extrabold uppercase leading-[0.98] tracking-tight sm:text-5xl lg:text-7xl"
-            >
-              LET&apos;S TALK
-              <span className="text-primary"> KURO SIZZLERS.</span>
-            </h1>
+      {/* Description */}
+      <p className="mt-8 max-w-2xl font-body text-sm leading-7 text-white/55 sm:text-base">
+        Whether you&apos;re planning a table, a gathering, or simply want to
+        know more about Kuro Sizzlers, send us a message and our team
+        will get back to you.
+      </p>
 
-            <p className="mt-6 max-w-2xl text-center font-body text-sm leading-7 text-white/65 sm:text-base">
-              Whether you&apos;re planning a table, a gathering, or simply want
-              to know more about Kuro Sizzlers, send us a message and our team
-              will get back to you.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Decorative Divider */}
+      <div className="mt-12 flex items-center gap-4">
+        <span className="h-px w-16 bg-primary/50" />
+        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+        <span className="h-px w-16 bg-primary/50" />
+      </div>
+
+    </div>
+  </div>
+
+  {/* Scroll Indicator */}
+  <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-display text-[9px] font-bold uppercase tracking-[0.35em] text-white/25">
+    Scroll to discover
+  </span>
+</section>
             {/* CONTACT + FORM */}
       <section
         aria-labelledby="contact-form-title"

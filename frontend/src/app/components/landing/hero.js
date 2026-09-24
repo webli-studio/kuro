@@ -106,10 +106,7 @@ export default function Hero() {
   speed={0.65}
 />
 
-      {/* Decorative Lines */}
-      <div className="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-white/[0.06] lg:block" />
-      <div className="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-white/[0.06] lg:block" />
-
+     
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col px-5 py-8 sm:px-8 lg:px-12">
 
         {/* Top Bar */}

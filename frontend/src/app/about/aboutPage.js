@@ -118,10 +118,7 @@ export default function OurStoryPage() {
         {/* Grid */}
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-50" />
 
-        {/* Side Lines */}
-        <div className="pointer-events-none absolute left-6 top-0 hidden h-full w-px bg-white/[0.06] lg:block" />
-        <div className="pointer-events-none absolute right-6 top-0 hidden h-full w-px bg-white/[0.06] lg:block" />
- 
+        {/* Content */}
         <div className="relative z-10 mx-auto w-full max-w-[1360px]">
           <div className="about-hero-content mx-auto flex max-w-5xl flex-col items-center text-center">
 
