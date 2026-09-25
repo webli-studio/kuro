@@ -99,11 +99,7 @@ export default function Hero() {
       </div>
 
       {/* Smoke */}
-      <SmokeEffect
-  count={6}
-  opacity={0.8}
-  speed={0.65}
-/>
+      <SmokeEffect opacity={0.55} />
 
      
       <div className="relative z-10 mx-auto flex min-h-screen max-w-[1440px] flex-col px-5 py-8 sm:px-8 lg:px-12">

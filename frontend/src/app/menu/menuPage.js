@@ -110,11 +110,7 @@ export default function MenuPage() {
   className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
 >
   {/* Smoke */}
-    <SmokeEffect
-      count={6}
-      opacity={0.8}
-      speed={0.65}
-    />
+    <SmokeEffect opacity={0.55} />
 
   {/* Ambient gold glow */}
   <div className="pointer-events-none absolute left-1/2 top-1/2 h-[520px] w-[520px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-[140px]" />

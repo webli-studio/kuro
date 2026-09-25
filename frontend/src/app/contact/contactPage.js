@@ -1,15 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import toast, { Toaster } from "react-hot-toast";
 import SmokeEffect from "../components/effects/smokeEffect";
 
 gsap.registerPlugin(ScrollTrigger);
-
-
 
 const contactOptions = [
   {
@@ -34,6 +33,56 @@ const contactOptions = [
 
 export default function ContactPage() {
   const pageRef = useRef(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+    if (!accessKey) {
+      toast.error("Something went wrong. Please try again later.");
+      console.error(
+        "NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY is missing from environment variables."
+      );
+      return;
+    }
+
+    formData.append("access_key", accessKey);
+    formData.append("subject", "New Kuro Sizzlers Enquiry");
+    formData.append("from_name", "Kuro Sizzlers Website");
+
+    try {
+      setIsSubmitting(true);
+
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        toast.success("Enquiry sent successfully!");
+        form.reset();
+      } else {
+        console.error("Web3Forms error:", data);
+        toast.error(
+          data.message || "Unable to send enquiry. Please try again."
+        );
+      }
+    } catch (error) {
+      console.error("Form submission error:", error);
+      toast.error("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   useGSAP(
     () => {
@@ -232,68 +281,68 @@ export default function ContactPage() {
 
   return (
     <main ref={pageRef} className="w-full">
+      <Toaster
+        position="top-center"
+        toastOptions={{
+          duration: 4000,
+        }}
+      />
+
       {/* HERO */}
-<section
-  aria-labelledby="contact-title"
-  className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
->
-  {/* Smoke */}
-  <SmokeEffect
-    count={6}
-    opacity={0.8}
-    speed={0.65}
-  />
-
-  {/* Ambient Glow */}
-  <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-[130px]" />
-
-  {/* Subtle Grid */}
-  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-50" />
-
-  {/* Content */}
-  <div className="relative z-10 mx-auto w-full max-w-[1360px]">
-    <div className="contact-hero-content mx-auto flex max-w-5xl flex-col items-center text-center">
-
-      {/* Eyebrow */}
-      <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-2 font-body text-[10px] font-black uppercase tracking-[0.25em] text-primary sm:text-xs">
-        Reservations & Enquiries
-      </span>
-
-      {/* Heading */}
-      <h1
-        id="contact-title"
-        className="mt-7 font-display text-[clamp(3.5rem,8vw,7.5rem)] font-black uppercase leading-[0.88] tracking-[-0.055em]"
+      <section
+        aria-labelledby="contact-title"
+        className="relative flex min-h-[72vh] w-full items-center overflow-hidden bg-wok-black px-5 py-24 text-white sm:px-8 lg:min-h-[78vh] lg:px-12"
       >
-        LET&apos;S TALK
-        <br />
-        <span className="text-primary">
-          KURO SIZZLERS.
+        {/* Smoke */}
+        <SmokeEffect opacity={0.55} />
+
+        {/* Ambient Glow */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.06] blur-[130px]" />
+
+        {/* Subtle Grid */}
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px] opacity-50" />
+
+        {/* Content */}
+        <div className="relative z-10 mx-auto w-full max-w-[1360px]">
+          <div className="contact-hero-content mx-auto flex max-w-5xl flex-col items-center text-center">
+            {/* Eyebrow */}
+            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/[0.08] px-4 py-2 font-body text-[10px] font-black uppercase tracking-[0.25em] text-primary sm:text-xs">
+              Reservations & Enquiries
+            </span>
+
+            {/* Heading */}
+            <h1
+              id="contact-title"
+              className="mt-7 font-display text-[clamp(3.5rem,8vw,7.5rem)] font-black uppercase leading-[0.88] tracking-[-0.055em]"
+            >
+              LET&apos;S TALK
+              <br />
+              <span className="text-primary">KURO SIZZLERS.</span>
+            </h1>
+
+            {/* Description */}
+            <p className="mt-8 max-w-2xl font-body text-sm leading-7 text-white/55 sm:text-base">
+              Whether you&apos;re planning a table, a gathering, or simply want to
+              know more about Kuro Sizzlers, send us a message and our team
+              will get back to you.
+            </p>
+
+            {/* Decorative Divider */}
+            <div className="mt-12 flex items-center gap-4">
+              <span className="h-px w-16 bg-primary/50" />
+              <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+              <span className="h-px w-16 bg-primary/50" />
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-display text-[9px] font-bold uppercase tracking-[0.35em] text-white/25">
+          Scroll to discover
         </span>
-      </h1>
+      </section>
 
-      {/* Description */}
-      <p className="mt-8 max-w-2xl font-body text-sm leading-7 text-white/55 sm:text-base">
-        Whether you&apos;re planning a table, a gathering, or simply want to
-        know more about Kuro Sizzlers, send us a message and our team
-        will get back to you.
-      </p>
-
-      {/* Decorative Divider */}
-      <div className="mt-12 flex items-center gap-4">
-        <span className="h-px w-16 bg-primary/50" />
-        <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-        <span className="h-px w-16 bg-primary/50" />
-      </div>
-
-    </div>
-  </div>
-
-  {/* Scroll Indicator */}
-  <span className="absolute bottom-8 left-1/2 -translate-x-1/2 font-display text-[9px] font-bold uppercase tracking-[0.35em] text-white/25">
-    Scroll to discover
-  </span>
-</section>
-            {/* CONTACT + FORM */}
+      {/* CONTACT + FORM */}
       <section
         aria-labelledby="contact-form-title"
         className="w-full bg-surface-cream py-16 sm:py-20 lg:py-24"
@@ -382,8 +431,7 @@ export default function ContactPage() {
               </div>
 
               <form
-                action="#"
-                method="post"
+                onSubmit={handleSubmit}
                 className="contact-form-fields space-y-5"
               >
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
@@ -468,7 +516,8 @@ export default function ContactPage() {
                     </select>
                   </div>
                 </div>
-                                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+
+                <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
                   <div>
                     <label
                       htmlFor="date"
@@ -523,9 +572,11 @@ export default function ContactPage() {
 
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="inline-flex min-h-13 w-full items-center justify-center gap-2 rounded-lg bg-primary px-6 font-body text-sm font-black uppercase tracking-wide text-wok-black transition hover:bg-primary-hover sm:w-auto"
                 >
-                  Send Enquiry
+                  {isSubmitting ? "Sending..." : "Send Enquiry"}
+
                   <span className="material-symbols-outlined text-[19px]">
                     arrow_forward
                   </span>
@@ -539,70 +590,67 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
-            {/* =========================================================
-    BOTTOM CTA
-========================================================== */}
-<section
-  aria-labelledby="contact-cta-title"
-  className="relative overflow-hidden bg-mango-gold py-24 text-wok-black sm:py-28 lg:py-32"
->
-  {/* Background Typography */}
-  <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display md:text-[12rem] text-[8rem] font-black leading-none text-wok-black/[0.035] text-center">
-    KURO<br />SIZZLERS
-  </div>
 
-  {/* Content */}
-  <div className="contact-bottom-cta relative z-10 mx-auto max-w-[900px] px-5 text-center sm:px-8">
-    {/* Eyebrow */}
-    <p className="font-display text-xs font-black uppercase tracking-[0.25em]">
-      Explore More
-    </p>
+      {/* =========================================================
+          BOTTOM CTA
+      ========================================================== */}
 
-    {/* Heading */}
-    <h2
-      id="contact-cta-title"
-      className="mt-5 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.04em] sm:text-6xl lg:text-8xl"
-    >
-      EXPERIENCE
-      <br />
-      THE
-      <br />
-      <span className="text-white">
-        SIZZLE.
-      </span>
-    </h2>
-
-    {/* Description */}
-    <p className="mx-auto mt-7 max-w-2xl font-body text-sm leading-7 text-wok-black/65 sm:text-base">
-      Explore our menu, discover the flavours and experience what makes
-      every meal at Kuro Sizzlers memorable.
-    </p>
-
-    {/* Actions */}
-    <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-      <Link
-        href="/menu"
-        className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition-all duration-300 hover:-translate-y-1 hover:bg-charcoal-night"
+      <section
+        aria-labelledby="contact-cta-title"
+        className="relative overflow-hidden bg-mango-gold py-24 text-wok-black sm:py-28 lg:py-32"
       >
-        Explore Menu
+        {/* Background Typography */}
+        <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none font-display md:text-[12rem] text-[8rem] font-black leading-none text-wok-black/[0.035] text-center">
+          KURO
+          <br />
+          SIZZLERS
+        </div>
 
-        <span aria-hidden="true">
-          →
-        </span>
-      </Link>
+        {/* Content */}
+        <div className="contact-bottom-cta relative z-10 mx-auto max-w-[900px] px-5 text-center sm:px-8">
+          {/* Eyebrow */}
+          <p className="font-display text-xs font-black uppercase tracking-[0.25em]">
+            Explore More
+          </p>
 
-      <Link
-        href="/gallery"
-        className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-wok-black transition-all duration-300 hover:-translate-y-1 hover:bg-wok-black hover:text-primary"
-      >
-        View Gallery
-      </Link>
-    </div>
-  </div>
-</section>
+          {/* Heading */}
+          <h2
+            id="contact-cta-title"
+            className="mt-5 font-display text-5xl font-black uppercase leading-[0.88] tracking-[-0.04em] sm:text-6xl lg:text-8xl"
+          >
+            EXPERIENCE
+            <br />
+            THE
+            <br />
+            <span className="text-white">SIZZLE.</span>
+          </h2>
+
+          {/* Description */}
+          <p className="mx-auto mt-7 max-w-2xl font-body text-sm leading-7 text-wok-black/65 sm:text-base">
+            Explore our menu, discover the flavours and experience what makes
+            every meal at Kuro Sizzlers memorable.
+          </p>
+
+          {/* Actions */}
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link
+              href="/menu"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-mango-gold transition-all duration-300 hover:-translate-y-1 hover:bg-charcoal-night"
+            >
+              Explore Menu
+
+              <span aria-hidden="true">→</span>
+            </Link>
+
+            <Link
+              href="/"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg border-2 border-wok-black px-7 font-body text-sm font-black uppercase tracking-wide text-wok-black transition-all duration-300 hover:-translate-y-1 hover:bg-wok-black hover:text-primary"
+            >
+              Back to Home
+            </Link>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
-
-
-

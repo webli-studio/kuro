@@ -38,13 +38,10 @@ const orderLinks = [
 
 const phoneNumbers = [
   {
-    label: "9900803958",
-    href: "tel:+919900803958",
+    label: "8971685958",
+    href: "tel:+918971685958",
   },
-  {
-    label: "9620421129",
-    href: "tel:+919620421129",
-  },
+  
 ];
 
 const mapLink =
@@ -58,11 +55,7 @@ export default function Footer() {
         id="footer-section"
       >
         {/* Smoke */}
-      <SmokeEffect
-  count={6}
-  opacity={0.8}
-  speed={0.65}
-/>
+      <SmokeEffect opacity={0.55} />
         <div className="relative z-10 mx-auto max-w-[1360px] px-4 pt-16 pb-12 sm:px-8">
           {/* Main Footer Grid */}
           <div className="mb-12 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-12">
@@ -170,7 +163,7 @@ export default function Footer() {
                     </span>
 
                     <span className="text-white/50">
-                      Bengaluru
+                      Rajrajeshwari Nagar, Bengaluru, Karnataka
                     </span>
                   </div>
                 </div>
@@ -443,7 +436,7 @@ export default function Footer() {
       ========================================================= */}
       <div className="fixed bottom-20 right-5 z-40">
         <a
-          href="https://wa.me/919900803958"
+          href="https://wa.me/918971685958"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 rounded-full border-2 border-mango-gold bg-wok-black md:px-4 md:py-2.5 p-2 font-display text-xs font-black uppercase tracking-wider text-mango-gold shadow-2xl transition-all duration-300 hover:scale-105 hover:bg-charcoal-night hover:text-white"
