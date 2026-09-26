@@ -24,7 +24,7 @@ export default function SmokeEffect({
           WebkitBackfaceVisibility: "hidden",
         }}
       >
-        <source src="/smokeEffect/smoke.mp4" type="video/mp4" />
+        <source src="/smokeEffect/smoke1.mp4" type="video/mp4" />
       </video>
     </div>
   );
